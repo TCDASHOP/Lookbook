@@ -1,1 +1,478 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>TCDA — LOOKBOOK</title>
+  <meta name="description" content="TCDA LOOKBOOK — Gallery-style that sells. View Product → BASE." />
 
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --fg: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --hair: rgba(255,255,255,.10);
+      --card: rgba(255,255,255,.06);
+      --shadow: 0 16px 60px rgba(0,0,0,.55);
+      --radius: 22px;
+      --max: 1160px;
+      --pad: clamp(16px, 3vw, 28px);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 900px at 15% 10%, rgba(140,140,255,.10), transparent 60%),
+        radial-gradient(900px 700px at 80% 20%, rgba(255,120,180,.08), transparent 60%),
+        radial-gradient(900px 700px at 30% 85%, rgba(120,255,210,.08), transparent 60%),
+        var(--bg);
+      color:var(--fg);
+      font: 500 15px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      letter-spacing: .2px;
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ width:min(var(--max), 100%); margin:0 auto; padding: var(--pad); }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,12,16,.72), rgba(11,12,16,.28));
+      border-bottom: 1px solid var(--hair);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 14px var(--pad);
+      width:min(var(--max), 100%);
+      margin:0 auto;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      min-width: 180px;
+    }
+    .mark{
+      width:34px; height:34px;
+      border-radius: 12px;
+      background: conic-gradient(from 210deg, #9b8cff, #ff6fb1, #55ffd2, #9b8cff);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .brand h1{
+      margin:0;
+      font-size: 13px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      opacity: .95;
+    }
+    .brand small{
+      display:block;
+      margin-top:2px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .4px;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      padding: 10px 12px;
+      border: 1px solid var(--hair);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.86);
+      font-size: 12px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+      -webkit-user-select:none;
+    }
+    .pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.16); }
+    .pill.primary{
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+    }
+
+    /* Hero */
+    .hero{ padding: 22px 0 10px; }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:end;
+    }
+    .kicker{
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .headline{
+      margin:0;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: .2px;
+    }
+    .sub{
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 54ch;
+    }
+    .metaBox{
+      border: 1px solid var(--hair);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      padding: 14px 14px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.28);
+    }
+    .metaRow{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 10px 8px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .metaRow:last-child{ border-bottom: none; }
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(255,255,255,.42);
+      margin-top: 6px;
+      flex: 0 0 auto;
+    }
+    .metaRow b{ font-weight: 650; }
+    .metaRow div{ color: rgba(255,255,255,.80); font-size: 12.5px; }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      gap: 18px;
+      padding: 14px 0 44px;
+    }
+    .look{
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      box-shadow: var(--shadow);
+      transform: translateY(6px);
+      opacity: 0;
+      transition: transform .7s ease, opacity .7s ease;
+      will-change: transform, opacity;
+    }
+    .look.is-in{ transform: translateY(0); opacity: 1; }
+
+    .art{
+      width: 100%;
+      aspect-ratio: 16/10;
+      position: relative;
+      display:block;
+      background: #111;
+    }
+
+    /* ▼本番は img を使う（下の .art img を活用） */
+    .art::before{
+      content:"";
+      position:absolute; inset:-20%;
+      background: var(--bgArt, radial-gradient(900px 700px at 20% 30%, rgba(155,140,255,.55), transparent 60%));
+      filter: saturate(1.2) contrast(1.05);
+      transform: scale(1.04);
+    }
+    .art::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 700px at 70% 20%, rgba(255,111,177,.35), transparent 62%),
+        radial-gradient(800px 650px at 25% 80%, rgba(85,255,210,.28), transparent 65%),
+        linear-gradient(to bottom, rgba(0,0,0,.08), rgba(0,0,0,.60));
+      pointer-events:none;
+    }
+
+    /* 画像差し替え用 */
+    .art img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .overlay{
+      position:absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 18px 18px 16px;
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .text{ max-width: 72%; }
+    .title{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: .4px;
+    }
+    .note{
+      margin: 6px 0 0;
+      font-size: 12px;
+      color: rgba(255,255,255,.70);
+    }
+
+    .ctaWrap{
+      pointer-events: auto;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      font-size: 12px;
+      color: rgba(255,255,255,.92);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+      -webkit-user-select:none;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .cta:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.26);
+    }
+    .tag{
+      font-size: 11px;
+      color: rgba(255,255,255,.68);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      padding: 7px 10px;
+      border-radius: 999px;
+      user-select:none;
+      -webkit-user-select:none;
+    }
+
+    /* Hover reveal (PC): keeps gallery clean */
+    @media (hover:hover){
+      .overlay{ opacity: .0; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; }
+      .look:hover .overlay{ opacity: 1; transform: translateY(0); }
+      .look:hover .art::before{ transform: scale(1.07); transition: transform .45s ease; }
+    }
+    /* Mobile: overlay always visible */
+    @media (hover:none){ .overlay{ opacity: 1; } }
+
+    /* Responsive hero + card ratio */
+    @media (max-width: 860px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .text{ max-width: 100%; }
+      .art{ aspect-ratio: 4/5; }
+    }
+
+    footer{
+      border-top: 1px solid var(--hair);
+      background: rgba(0,0,0,.10);
+    }
+    .foot{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 18px var(--pad) 22px;
+      width:min(var(--max), 100%);
+      margin:0 auto;
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+    }
+    .foot a{
+      color: rgba(255,255,255,.78);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,255,255,.22);
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .look, .overlay, .pill, .cta{ transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand" aria-label="Brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>Transcend Color Digital Apparel</h1>
+          <small>LOOKBOOK — Gallery that sells</small>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navigation">
+        <!-- ▼必要に応じて差し替え -->
+        <a class="pill" href="https://www.tcda.shop/" target="_blank" rel="noopener">Shop (BASE)</a>
+        <a class="pill" href="#looks">Looks</a>
+        <a class="pill primary" href="mailto:info@tcda.shop?subject=TCDA%20Inquiry">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-label="Hero">
+      <div class="heroGrid">
+        <div>
+          <div class="kicker">TCDA / Lookbook</div>
+          <h2 class="headline">Wear the artwork.<br/>Stay in the color.</h2>
+          <p class="sub">
+            Gallery-style lookbook built to sell. Tap a look → jump to the product page.
+          </p>
+        </div>
+
+        <aside class="metaBox" aria-label="Quick info">
+          <div class="metaRow">
+            <span class="dot" aria-hidden="true"></span>
+            <div><b>Rule</b><br/>One look = one artwork. Minimal text.</div>
+          </div>
+          <div class="metaRow">
+            <span class="dot" aria-hidden="true"></span>
+            <div><b>CTA</b><br/>“View Product” keeps the mood.</div>
+          </div>
+          <div class="metaRow">
+            <span class="dot" aria-hidden="true"></span>
+            <div><b>Tip</b><br/>Replace dummy art with your images.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="looks" class="gallery" aria-label="Lookbook gallery">
+
+      <!-- =========================
+        ▼ 1LOOK テンプレ
+        - 商品URLは data-product と a.href を同じに
+        - 画像を使う場合は <img src="..." ...> を art の中に置く
+        ========================== -->
+
+      <article class="look" data-product="https://www.tcda.shop/" data-tag="Recycled Hoodie"
+        style="--bgArt: radial-gradient(900px 700px at 25% 25%, rgba(155,140,255,.62), transparent 60%), radial-gradient(800px 650px at 80% 65%, rgba(85,255,210,.38), transparent 65%)">
+        <a class="art" href="https://www.tcda.shop/" target="_blank" rel="noopener" aria-label="View product: Flow State Hoodie">
+          <!-- ▼本番はここに画像を入れる
+          <img src="images/look01.jpg" alt="Transcend Color — Flow State Hoodie">
+          -->
+        </a>
+        <div class="overlay">
+          <div class="text">
+            <h3 class="title">Transcend Color — Flow State Hoodie</h3>
+            <p class="note">All-over print / Recycled / Relaxed fit</p>
+          </div>
+          <div class="ctaWrap">
+            <span class="tag" aria-hidden="true">Recycled Hoodie</span>
+            <a class="cta" href="https://www.tcda.shop/" target="_blank" rel="noopener">View Product →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="look" data-product="https://www.tcda.shop/" data-tag="Crew Neck Tee"
+        style="--bgArt: radial-gradient(900px 700px at 15% 40%, rgba(255,111,177,.60), transparent 62%), radial-gradient(800px 650px at 75% 25%, rgba(155,140,255,.35), transparent 65%)">
+        <a class="art" href="https://www.tcda.shop/" target="_blank" rel="noopener" aria-label="View product: Electric Bloom Tee"></a>
+        <div class="overlay">
+          <div class="text">
+            <h3 class="title">Transcend Color — Electric Bloom Tee</h3>
+            <p class="note">Cotton-touch jersey / 4-way stretch</p>
+          </div>
+          <div class="ctaWrap">
+            <span class="tag" aria-hidden="true">Crew Neck Tee</span>
+            <a class="cta" href="https://www.tcda.shop/" target="_blank" rel="noopener">View Product →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="look" data-product="https://www.tcda.shop/" data-tag="Zip Hoodie"
+        style="--bgArt: radial-gradient(900px 700px at 65% 20%, rgba(85,255,210,.55), transparent 62%), radial-gradient(900px 700px at 18% 78%, rgba(255,111,177,.30), transparent 65%)">
+        <a class="art" href="https://www.tcda.shop/" target="_blank" rel="noopener" aria-label="View product: Afterglow Zip Hoodie"></a>
+        <div class="overlay">
+          <div class="text">
+            <h3 class="title">Transcend Color — Afterglow Zip Hoodie</h3>
+            <p class="note">Metal zipper / Soft fleece inside</p>
+          </div>
+          <div class="ctaWrap">
+            <span class="tag" aria-hidden="true">Zip Hoodie</span>
+            <a class="cta" href="https://www.tcda.shop/" target="_blank" rel="noopener">View Product →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="look" data-product="https://www.tcda.shop/" data-tag="Slip-On Shoes"
+        style="--bgArt: radial-gradient(900px 700px at 20% 20%, rgba(85,255,210,.50), transparent 62%), radial-gradient(900px 700px at 72% 72%, rgba(155,140,255,.35), transparent 65%)">
+        <a class="art" href="https://www.tcda.shop/" target="_blank" rel="noopener" aria-label="View product: Chromatic Slip-On"></a>
+        <div class="overlay">
+          <div class="text">
+            <h3 class="title">Transcend Color — Chromatic Slip-On</h3>
+            <p class="note">Canvas upper / EVA outsole / Breathable lining</p>
+          </div>
+          <div class="ctaWrap">
+            <span class="tag" aria-hidden="true">Slip-On Shoes</span>
+            <a class="cta" href="https://www.tcda.shop/" target="_blank" rel="noopener">View Product →</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <div>© <span id="y"></span> Transcend Color Digital Apparel</div>
+      <div>
+        <a href="https://www.tcda.shop/" target="_blank" rel="noopener">Shop</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:info@tcda.shop?subject=TCDA%20Inquiry">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const looks = document.querySelectorAll('.look');
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) e.target.classList.add('is-in');
+      }
+    }, { threshold: 0.2 });
+    looks.forEach(el => io.observe(el));
+
+    // Tap anywhere on the card → View Product (mobile friendly)
+    looks.forEach(el => {
+      el.addEventListener('click', (ev) => {
+        if (ev.target.closest('a')) return; // clicked a link; let it work
+        const cta = el.querySelector('.cta');
+        if (cta) cta.click();
+      }, { passive: true });
+    });
+  </script>
+</body>
+</html>
