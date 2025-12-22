@@ -1,101 +1,150 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TCDA LOOKBOOK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LOOKBOOK | Sairen Color Archive</title>
+<meta name="description" content="Gallery-style lookbook focused on color." />
+
+<!-- OG / SNS -->
+<meta property="og:title" content="LOOKBOOK | Sairen Color Archive">
+<meta property="og:description" content="Color as the core.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://look.sairencolorarchive.com/">
+<meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og.jpg">
 
 <style>
-body{
-  margin:0;
-  background:#0b0c10;
-  color:#fff;
-  font-family: system-ui, -apple-system, sans-serif;
-}
-section{ max-width:1100px; margin:0 auto; padding:64px 20px; }
-.hero{text-align:center;}
-.hero h1{font-size:32px; letter-spacing:.08em;}
-.hero p{opacity:.7; margin-top:12px;}
+/* =========================
+   Base
+========================= */
+* { box-sizing: border-box; }
 
-.look{margin-bottom:96px;}
-.look img{
-  width:100%;
-  display:block;
-  border-radius:18px;
-}
-.look-info{
-  margin-top:20px;
-}
-.look-info small{
-  opacity:.5;
-  letter-spacing:.12em;
-}
-.look-info h2{
-  margin:8px 0;
-  font-size:18px;
-}
-.look-info p{
-  opacity:.6;
-  font-size:14px;
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0b0c10;
+  color: rgba(255,255,255,0.85);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  scroll-behavior: smooth;
 }
 
-.cta{
-  display:inline-block;
-  margin-top:14px;
-  padding:10px 18px;
-  border:1px solid rgba(255,255,255,.3);
-  border-radius:999px;
-  font-size:13px;
+/* =========================
+   Hero
+========================= */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh 8vw;
 }
-.cta:hover{background:rgba(255,255,255,.08);}
-footer{
-  text-align:center;
-  padding:40px 20px;
-  opacity:.5;
-  font-size:12px;
+
+.hero h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.hero p {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.6;
+  letter-spacing: 0.08em;
+}
+
+/* =========================
+   LOOK (1LOOK = 1 screen)
+========================= */
+.look {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6vh 4vw;
+}
+
+.look img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   CTA
+========================= */
+.cta {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 10px 18px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.35);
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cta:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+  padding: 60px 0;
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.4;
+  letter-spacing: 0.12em;
 }
 </style>
 </head>
 
 <body>
 
+<!-- Hero -->
 <section class="hero">
-  <h1>TCDA LOOKBOOK</h1>
-  <p>2026 Collection / Transcend Color</p>
+  <h1>LOOKBOOK</h1>
+  <p>2026 Collection</p>
 </section>
 
+<!-- LOOK 01 : Zip Hoodie / High Saturation -->
 <section class="look">
-  <img src="assets/img/looks/001.jpg" alt="">
-  <div class="look-info">
-    <small>LOOK 01</small>
-    <h2>Flow State Hoodie</h2>
-    <p>All-over print / Recycled hoodie</p>
-    <a class="cta" href="https://www.tcda.shop/">View Product →</a>
-  </div>
+  <img src="assets/img/looks/001_hs_zh.jpg" alt="Zip Hoodie Look">
 </section>
 
+<!-- LOOK 02 -->
 <section class="look">
-  <img src="assets/img/looks/002.jpg" alt="">
-  <div class="look-info">
-    <small>LOOK 02</small>
-    <h2>Electric Bloom Tee</h2>
-    <p>Cotton-touch jersey / 4-way stretch</p>
-    <a class="cta" href="https://www.tcda.shop/">View Product →</a>
-  </div>
+  <img src="assets/img/looks/002_ms_zh.jpg" alt="">
 </section>
 
+<!-- LOOK 03 -->
 <section class="look">
-  <img src="assets/img/looks/003.jpg" alt="">
-  <div class="look-info">
-    <small>LOOK 03</small>
-    <h2>Chromatic Slip-On</h2>
-    <p>Canvas / EVA sole</p>
-    <a class="cta" href="https://www.tcda.shop/">View Product →</a>
-  </div>
+  <img src="assets/img/looks/003_ls_zh.jpg" alt="">
 </section>
+
+<!-- LOOK 04 -->
+<section class="look">
+  <img src="assets/img/looks/004_ms_hd.jpg" alt="">
+</section>
+
+<!-- CTA -->
+<a class="cta" href="https://www.tcda.shop/" target="_blank" rel="noopener">
+  View Product
+</a>
 
 <footer>
-© 2025 Transcend Color Digital Apparel
+  © 2026 SAIREN COLOR ARCHIVE
 </footer>
 
 </body>
