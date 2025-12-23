@@ -9,15 +9,12 @@
 
 <!-- OG / SNS -->
 <meta property="og:title" content="LOOKBOOK | Sairen Color Archive">
-<meta property="og:description" content="Color as the core.">
+<meta property="og:description" content="2026 Collection">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://look.sairencolorarchive.com/">
 <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og.jpg">
 
 <style>
-/* =========================
-   Base
-========================= */
 * { box-sizing: border-box; }
 
 html, body {
@@ -29,9 +26,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* =========================
-   Hero
-========================= */
+/* Hero */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -39,14 +34,12 @@ html, body {
   justify-content: center;
   padding: 10vh 8vw;
 }
-
 .hero h1 {
   font-size: clamp(28px, 4vw, 42px);
   letter-spacing: 0.18em;
   font-weight: 500;
   margin: 0;
 }
-
 .hero p {
   margin-top: 12px;
   font-size: 14px;
@@ -54,9 +47,7 @@ html, body {
   letter-spacing: 0.08em;
 }
 
-/* =========================
-   LOOK (1LOOK = 1 screen)
-========================= */
+/* LOOK */
 .look {
   min-height: 100vh;
   display: flex;
@@ -64,42 +55,64 @@ html, body {
   justify-content: center;
   padding: 6vh 4vw;
 }
-
 .look img {
   width: 100%;
   max-width: 1200px;
   height: auto;
   display: block;
+
+  /* JSフェード用（最初は控えめに隠す） */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 700ms ease, transform 700ms ease;
+  will-change: opacity, transform;
+}
+.look.is-visible img {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* =========================
-   CTA
-========================= */
+/* Scroll hint（極小・気配だけ） */
+.scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.35);
+  user-select: none;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+.scroll-hint.is-hidden { opacity: 0; }
+
+/* CTA */
 .cta {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 22px;
+  right: 22px;
   padding: 10px 18px;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.22);
   background: rgba(0,0,0,0.35);
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.75);
   text-decoration: none;
   backdrop-filter: blur(6px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 300ms ease, transform 300ms ease;
+  opacity: 0;               /* JSで必要な時だけ“気配”として出す */
+  transform: translateY(6px);
 }
-
-.cta:hover {
-  opacity: 1;
-  transform: translateY(-2px);
+.cta.is-on {
+  opacity: 0.6;
+  transform: translateY(0);
 }
+.cta:hover { opacity: 0.9; transform: translateY(-2px); }
 
-/* =========================
-   Footer
-========================= */
+/* Footer */
 footer {
   padding: 60px 0;
   text-align: center;
@@ -112,40 +125,71 @@ footer {
 
 <body>
 
-<!-- Hero -->
 <section class="hero">
   <h1>LOOKBOOK</h1>
   <p>2026 Collection</p>
 </section>
 
-<!-- LOOK 01 : Zip Hoodie / High Saturation -->
+<!-- ↓ あなたの20LOOKをここに並べる（例として最初の3つだけ入れてます） -->
 <section class="look">
-  <img src="assets/img/looks/001_hs_zh.jpg" alt="Zip Hoodie Look">
+  <img src="assets/img/looks/001_hs_zh_unisex.jpg" alt="Look"
+       loading="eager" decoding="async" fetchpriority="high">
 </section>
 
-<!-- LOOK 02 -->
 <section class="look">
-  <img src="assets/img/looks/002_ms_zh.jpg" alt="">
+  <img src="assets/img/looks/002_ms_zh_unisex.jpg" alt="Look"
+       loading="lazy" decoding="async">
 </section>
 
-<!-- LOOK 03 -->
 <section class="look">
-  <img src="assets/img/looks/003_ls_zh.jpg" alt="">
+  <img src="assets/img/looks/003_ls_zh_unisex.jpg" alt="Look"
+       loading="lazy" decoding="async">
 </section>
+<!-- ↑ ここに 004〜020 を同じ形式で追加 -->
 
-<!-- LOOK 04 -->
-<section class="look">
-  <img src="assets/img/looks/004_ms_hd.jpg" alt="">
-</section>
-
-<!-- CTA -->
 <a class="cta" href="https://www.tcda.shop/" target="_blank" rel="noopener">
   View Product
 </a>
 
-<footer>
-  © 2026 SAIREN COLOR ARCHIVE
-</footer>
+<div class="scroll-hint" aria-hidden="true">↓</div>
+
+<footer>© 2026 SAIREN COLOR ARCHIVE</footer>
+
+<script>
+(() => {
+  const looks = Array.from(document.querySelectorAll('.look'));
+  const cta = document.querySelector('.cta');
+  const hint = document.querySelector('.scroll-hint');
+
+  // 1) LOOKを“静かに”フェードイン
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) e.target.classList.add('is-visible');
+    }
+  }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+
+  looks.forEach(s => io.observe(s));
+
+  // 2) スクロール中だけCTAを“気配”として出す + 矢印は最初だけ
+  let t = null;
+  const onScroll = () => {
+    if (hint) hint.classList.add('is-hidden');
+    if (cta) cta.classList.add('is-on');
+
+    clearTimeout(t);
+    t = setTimeout(() => {
+      if (cta && window.scrollY < 80) cta.classList.remove('is-on'); // ほぼトップなら消す
+      // スクロール停止後は少し薄く残してもいいが、今回は“消える寄り”にして静けさ優先
+      if (cta && window.scrollY >= 80) cta.classList.remove('is-on');
+    }, 900);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // 初期状態：トップではCTAは出さない（世界観優先）
+  if (window.scrollY > 80 && cta) cta.classList.add('is-on');
+})();
+</script>
 
 </body>
 </html>
