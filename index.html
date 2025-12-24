@@ -3,192 +3,115 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>LOOKBOOK | Sairen Color Archive</title>
-<meta name="description" content="Gallery-style lookbook focused on color." />
-
-<!-- OG / SNS -->
-<meta property="og:title" content="LOOKBOOK | Sairen Color Archive">
-<meta property="og:description" content="2026 Collection">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://look.sairencolorarchive.com/">
-<meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og.jpg">
+<title>COLOR AS TIME</title>
 
 <style>
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
-  margin: 0;
-  padding: 0;
   background: #0b0c10;
   color: rgba(255,255,255,0.85);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   scroll-behavior: smooth;
 }
 
-/* Hero */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10vh 8vw;
-}
-.hero h1 {
-  font-size: clamp(28px, 4vw, 42px);
-  letter-spacing: 0.18em;
-  font-weight: 500;
-  margin: 0;
-}
-.hero p {
-  margin-top: 12px;
-  font-size: 14px;
-  opacity: 0.6;
-  letter-spacing: 0.08em;
-}
-
-/* LOOK */
-.look {
-  min-height: 100vh;
+/* SECTION */
+.section {
+  height: 100vh;
+  width: 100%;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6vh 4vw;
 }
-.look img {
+
+/* INTRO */
+.intro {
+  background: #000;
+  font-size: clamp(22px, 4vw, 36px);
+  letter-spacing: 0.3em;
+}
+
+/* IMAGE */
+.section img {
   width: 100%;
-  max-width: 1200px;
-  height: auto;
-  display: block;
-
-  /* JSフェード用（最初は控えめに隠す） */
+  height: 100%;
+  object-fit: cover;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 700ms ease, transform 700ms ease;
-  will-change: opacity, transform;
-}
-.look.is-visible img {
-  opacity: 1;
-  transform: translateY(0);
+  transition: opacity 800ms ease;
 }
 
-/* Scroll hint（極小・気配だけ） */
-.scroll-hint {
-  position: fixed;
-  left: 50%;
-  bottom: 26px;
-  transform: translateX(-50%);
-  font-size: 14px;
-  letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.35);
-  user-select: none;
-  pointer-events: none;
-  transition: opacity 400ms ease;
+.section.is-visible img {
+  opacity: 1;
 }
-.scroll-hint.is-hidden { opacity: 0; }
+
+/* TIME */
+.time {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
+}
 
 /* CTA */
 .cta {
-  position: fixed;
-  bottom: 22px;
-  right: 22px;
-  padding: 10px 18px;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
   font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.22);
-  background: rgba(0,0,0,0.35);
-  color: rgba(255,255,255,0.75);
-  text-decoration: none;
-  backdrop-filter: blur(6px);
-  transition: opacity 300ms ease, transform 300ms ease;
-  opacity: 0;               /* JSで必要な時だけ“気配”として出す */
-  transform: translateY(6px);
-}
-.cta.is-on {
-  opacity: 0.6;
-  transform: translateY(0);
-}
-.cta:hover { opacity: 0.9; transform: translateY(-2px); }
-
-/* Footer */
-footer {
-  padding: 60px 0;
-  text-align: center;
-  font-size: 11px;
+  letter-spacing: 0.15em;
   opacity: 0.4;
-  letter-spacing: 0.12em;
+}
+
+/* FINAL */
+.final {
+  background: #111;
+  font-size: 14px;
+  letter-spacing: 0.2em;
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <h1>LOOKBOOK</h1>
-  <p>2026 Collection</p>
+<!-- INTRO -->
+<section class="section intro">
+  COLOR AS TIME
 </section>
 
-<!-- ↓ あなたの20LOOKをここに並べる（例として最初の3つだけ入れてます） -->
-<section class="look">
-  <img src="assets/img/looks/001_hs_zh_unisex.jpg" alt="Look"
-       loading="eager" decoding="async" fetchpriority="high">
+<!-- LOOK 01 -->
+<section class="section look">
+  <img src="assets/img/looks/001_hs_zh_unisex.jpg" alt="">
+  <div class="time">01 / 20</div>
+  <div class="cta">View</div>
 </section>
 
-<section class="look">
-  <img src="assets/img/looks/002_ms_zh_unisex.jpg" alt="Look"
-       loading="lazy" decoding="async">
+<!-- LOOK 02 -->
+<section class="section look">
+  <img src="assets/img/looks/002_ms_zh_unisex.jpg" alt="">
+  <div class="time">02 / 20</div>
+  <div class="cta">View</div>
 </section>
 
-<section class="look">
-  <img src="assets/img/looks/003_ls_zh_unisex.jpg" alt="Look"
-       loading="lazy" decoding="async">
+<!-- 〜 020まで同様に追加 -->
+
+<!-- FINAL -->
+<section class="section final">
+  <a href="https://www.tcda.shop/" style="color:#fff;text-decoration:none;">
+    View the Collection
+  </a>
 </section>
-<!-- ↑ ここに 004〜020 を同じ形式で追加 -->
-
-<a class="cta" href="https://www.tcda.shop/" target="_blank" rel="noopener">
-  View Product
-</a>
-
-<div class="scroll-hint" aria-hidden="true">↓</div>
-
-<footer>© 2026 SAIREN COLOR ARCHIVE</footer>
 
 <script>
-(() => {
-  const looks = Array.from(document.querySelectorAll('.look'));
-  const cta = document.querySelector('.cta');
-  const hint = document.querySelector('.scroll-hint');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('is-visible');
+  });
+},{ threshold: 0.4 });
 
-  // 1) LOOKを“静かに”フェードイン
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.isIntersecting) e.target.classList.add('is-visible');
-    }
-  }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
-
-  looks.forEach(s => io.observe(s));
-
-  // 2) スクロール中だけCTAを“気配”として出す + 矢印は最初だけ
-  let t = null;
-  const onScroll = () => {
-    if (hint) hint.classList.add('is-hidden');
-    if (cta) cta.classList.add('is-on');
-
-    clearTimeout(t);
-    t = setTimeout(() => {
-      if (cta && window.scrollY < 80) cta.classList.remove('is-on'); // ほぼトップなら消す
-      // スクロール停止後は少し薄く残してもいいが、今回は“消える寄り”にして静けさ優先
-      if (cta && window.scrollY >= 80) cta.classList.remove('is-on');
-    }, 900);
-  };
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  // 初期状態：トップではCTAは出さない（世界観優先）
-  if (window.scrollY > 80 && cta) cta.classList.add('is-on');
-})();
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
 </script>
 
 </body>
