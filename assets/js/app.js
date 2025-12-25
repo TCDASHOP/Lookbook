@@ -1,53 +1,107 @@
 (() => {
-  const looks = Array.from(document.querySelectorAll(".look"));
+  const pagesEl = document.getElementById("pages");
+  const stateEl = document.getElementById("state");
   const currentEl = document.getElementById("current");
   const totalEl = document.getElementById("total");
-  const cover = document.getElementById("cover");
-  const counter = document.querySelector(".counter");
+  const statsEl = document.getElementById("stats");
+  const issueDateEl = document.getElementById("issueDate");
 
-  if (totalEl) totalEl.textContent = String(looks.length).padStart(2, "0");
+  const pad2 = (n) => String(n).padStart(2, "0");
 
-  // ===== COVER hide on scroll =====
-  const updateCover = () => {
-    if (!cover) return;
-    const y = window.scrollY || 0;
-
-    // 最初の少しだけCOVERを残し、スクロールで自然に退場
-    const out = y > 40;
-    cover.classList.toggle("is-out", out);
-
-    // COVER表示中はカウンターを消す
-    if (counter) counter.classList.toggle("is-hidden", !out);
+  const setState = (msg) => {
+    stateEl.textContent = msg;
+    stateEl.style.display = msg ? "block" : "none";
   };
 
-  updateCover();
-  window.addEventListener("scroll", () => requestAnimationFrame(updateCover), { passive: true });
+  const render = (items) => {
+    totalEl.textContent = pad2(items.length);
+    currentEl.textContent = pad2(items.length ? 1 : 0);
 
-  // ===== IO: fade-in & counter =====
-  const io = new IntersectionObserver(
-    (entries) => {
-      // 一番“見えてる”lookを採用
-      const visible = entries
+    pagesEl.innerHTML = items.map((it, i) => {
+      const num = pad2(i + 1);
+      const capL = `${it.year || ""}${it.month ? "." + pad2(it.month) : ""}`;
+      const capR = `${it.category || ""}${Array.isArray(it.tags) && it.tags.length ? " / " + it.tags.join(", ") : ""}`;
+
+      return `
+        <section class="page" data-idx="${num}">
+          <div class="page__inner">
+            <div class="page__number">LOOK ${num}</div>
+
+            <picture>
+              <source srcset="${it.webp}" type="image/webp">
+              <img src="${it.jpg}" alt="LOOK ${num}" loading="lazy" decoding="async">
+            </picture>
+
+            <div class="page__caption" aria-hidden="true">
+              <span>${capL}</span>
+              <span>${capR}</span>
+            </div>
+          </div>
+        </section>
+      `;
+    }).join("");
+
+    // 裏表紙 stats
+    const cats = new Set(items.map(x => x.category).filter(Boolean));
+    const years = new Set(items.map(x => x.year).filter(Boolean));
+    const latest = items[0];
+    const updated = latest?.year ? `${latest.year}.${pad2(latest.month || 1)}` : "";
+
+    statsEl.textContent = `Total Looks: ${items.length} / Categories: ${cats.size} / Years: ${years.size}` + (updated ? ` / Updated: ${updated}` : "");
+
+    // ISSUEの日付を data からも合わせる（最新の年/月を優先）
+    if (updated) issueDateEl.textContent = updated;
+
+    // 露出 & カウンター
+    const innerEls = Array.from(document.querySelectorAll(".page__inner"));
+    const pageEls = Array.from(document.querySelectorAll(".page"));
+
+    const reveal = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add("is-in");
+      });
+    }, { threshold: 0.18 });
+
+    innerEls.forEach(el => reveal.observe(el));
+
+    const counter = new IntersectionObserver((entries) => {
+      const v = entries
         .filter(e => e.isIntersecting)
         .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-      // fade-in
-      for (const e of entries) {
-        if (e.isIntersecting) e.target.classList.add("is-in");
-      }
+      if (v) currentEl.textContent = v.target.dataset.idx;
+    }, { threshold: 0.6 });
 
-      // counter update
-      if (visible && currentEl) {
-        const idx = looks.indexOf(visible.target) + 1;
-        currentEl.textContent = String(idx).padStart(2, "0");
-      }
-    },
-    {
-      root: null,
-      threshold: [0.2, 0.35, 0.5, 0.65, 0.8],
-      rootMargin: "-10% 0px -30% 0px",
+    pageEls.forEach(el => counter.observe(el));
+  };
+
+  const load = async () => {
+    try {
+      setState("Loading…");
+      const res = await fetch("data/looks.json", { cache: "no-store" });
+      if (!res.ok) throw new Error(`looks.json load failed: ${res.status}`);
+
+      const data = await res.json();
+      const items = Array.isArray(data.items) ? data.items : [];
+
+      // 新しい順（year/month desc）
+      items.sort((a, b) => {
+        const A = (a.year || 0) * 100 + (a.month || 0);
+        const B = (b.year || 0) * 100 + (b.month || 0);
+        return B - A;
+      });
+
+      setState("");
+      render(items);
+    } catch (e) {
+      console.error(e);
+      setState("Could not load data/looks.json (check path & JSON).");
+      totalEl.textContent = "00";
+      currentEl.textContent = "00";
+      pagesEl.innerHTML = "";
+      statsEl.textContent = "";
     }
-  );
+  };
 
-  looks.forEach(el => io.observe(el));
+  load();
 })();
