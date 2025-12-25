@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>COLOR AS TIME</title>
-<meta name="description" content="A lookbook where color is experienced as time." />
+<title>COLOR AS TIME | SAIREN COLOR ARCHIVE</title>
+<meta name="description" content="A gallery-style lookbook where color is experienced as time." />
 
 <!-- OG -->
-<meta property="og:title" content="COLOR AS TIME">
+<meta property="og:title" content="COLOR AS TIME | SAIREN COLOR ARCHIVE">
+<meta property="og:description" content="LOOKBOOK">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://look.sairencolorarchive.com/">
 <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og.jpg">
@@ -16,9 +17,17 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+:root{
+  --bg: #0b0c10;
+  --ink: rgba(255,255,255,0.86);
+  --muted: rgba(255,255,255,0.55);
+  --hint: rgba(255,255,255,0.38);
+  --line: rgba(255,255,255,0.20);
+}
+
 html, body {
-  background: #0b0c10;
-  color: rgba(255,255,255,0.85);
+  background: var(--bg);
+  color: var(--ink);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   scroll-behavior: smooth;
 }
@@ -31,20 +40,41 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 /* Intro */
 .intro {
   background: #000;
+  padding: 10vh 8vw;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+.intro .title {
   letter-spacing: 0.35em;
-  font-size: clamp(22px, 4vw, 36px);
+  font-size: clamp(22px, 4vw, 38px);
+  font-weight: 500;
+}
+.intro .sub {
+  margin-top: 14px;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  color: var(--muted);
 }
 
-/* Image */
+/* Looks */
+.look picture, .look img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .look img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  /* "quiet breath" */
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 700ms ease, transform 700ms ease;
@@ -55,86 +85,294 @@ html, body {
   transform: translateY(0);
 }
 
-/* Time indicator */
+/* Minimal UI */
 .time {
   position: absolute;
-  left: 24px;
-  bottom: 24px;
+  left: 22px;
+  bottom: 22px;
   font-size: 12px;
   letter-spacing: 0.15em;
-  opacity: 0.6;
+  color: var(--muted);
+  user-select: none;
+  pointer-events: none;
 }
 
-/* CTA (exit only) */
 .cta {
   position: absolute;
-  right: 24px;
-  bottom: 24px;
+  right: 22px;
+  bottom: 22px;
   font-size: 12px;
   letter-spacing: 0.15em;
-  opacity: 0.4;
+  color: rgba(255,255,255,0.62);
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(6px);
+  opacity: 0.55;  /* “存在してないように存在する” */
+  transition: opacity 250ms ease, transform 250ms ease;
 }
+.cta:hover { opacity: 0.9; transform: translateY(-2px); }
+
+/* Scroll hint - first screens only */
+.scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  letter-spacing: 0.2em;
+  font-size: 14px;
+  color: var(--hint);
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 350ms ease;
+}
+.scroll-hint.is-hidden { opacity: 0; }
 
 /* Final */
 .final {
   background: #111;
-  letter-spacing: 0.2em;
-  font-size: 14px;
+  padding: 10vh 8vw;
 }
 .final a {
-  color: #fff;
+  color: rgba(255,255,255,0.92);
   text-decoration: none;
-  opacity: 0.8;
+  letter-spacing: 0.22em;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.28);
+  padding-bottom: 6px;
+  opacity: 0.85;
+  transition: opacity 200ms ease;
 }
+.final a:hover { opacity: 1; }
+.final .note {
+  margin-top: 14px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.12em;
+  font-size: 11px;
+}
+
+/* Accessibility */
+img { content-visibility: auto; }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<section class="section intro">
-  COLOR AS TIME
+<!-- INTRO (LOOK 00) -->
+<section class="section intro" aria-label="Intro">
+  <div>
+    <div class="title">COLOR AS TIME</div>
+    <div class="sub">LOOKBOOK — SAIREN COLOR ARCHIVE</div>
+  </div>
 </section>
 
-<!-- LOOK 01 -->
-<section class="section look">
-  <img src="assets/img/looks/001_hs_zh_unisex.jpg" alt="" loading="eager" fetchpriority="high">
+<!-- CTA: constant exit (subtle) -->
+<a class="cta" href="https://www.tcda.shop/" target="_blank" rel="noopener">View Product</a>
+
+<!-- LOOKS (01–20) -->
+<!-- Zip Hoodie (3) -->
+<section class="section look" aria-label="Look 01">
+  <picture>
+    <source srcset="assets/img/looks/001_hs_zh_unisex.webp" type="image/webp">
+    <img src="assets/img/looks/001_hs_zh_unisex.jpg" alt="Look 01" loading="eager" decoding="async" fetchpriority="high">
+  </picture>
   <div class="time">01 / 20</div>
-  <div class="cta">View</div>
 </section>
 
-<!-- LOOK 02 -->
-<section class="section look">
-  <img src="assets/img/looks/002_ms_zh_unisex.jpg" alt="" loading="lazy">
+<section class="section look" aria-label="Look 02">
+  <picture>
+    <source srcset="assets/img/looks/002_ms_zh_unisex.webp" type="image/webp">
+    <img src="assets/img/looks/002_ms_zh_unisex.jpg" alt="Look 02" loading="lazy" decoding="async">
+  </picture>
   <div class="time">02 / 20</div>
-  <div class="cta">View</div>
 </section>
 
-<!-- 003〜020を同じ形式で追加 -->
+<section class="section look" aria-label="Look 03">
+  <picture>
+    <source srcset="assets/img/looks/003_ls_zh_unisex.webp" type="image/webp">
+    <img src="assets/img/looks/003_ls_zh_unisex.jpg" alt="Look 03" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">03 / 20</div>
+</section>
+
+<!-- Unisex Hoodie (3) -->
+<section class="section look" aria-label="Look 04">
+  <picture>
+    <source srcset="assets/img/looks/004_ms_uh_unisex.webp" type="image/webp">
+    <img src="assets/img/looks/004_ms_uh_unisex.jpg" alt="Look 04" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">04 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 05">
+  <picture>
+    <source srcset="assets/img/looks/005_hs_uh_unisex.webp" type="image/webp">
+    <img src="assets/img/looks/005_hs_uh_unisex.jpg" alt="Look 05" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">05 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 06">
+  <picture>
+    <source srcset="assets/img/looks/006_ls_uh_unisex.webp" type="image/webp">
+    <img src="assets/img/looks/006_ls_uh_unisex.jpg" alt="Look 06" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">06 / 20</div>
+</section>
+
+<!-- Men's Tee (4) -->
+<section class="section look" aria-label="Look 07">
+  <picture>
+    <source srcset="assets/img/looks/007_hs_mt_men.webp" type="image/webp">
+    <img src="assets/img/looks/007_hs_mt_men.jpg" alt="Look 07" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">07 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 08">
+  <picture>
+    <source srcset="assets/img/looks/008_ms_mt_men.webp" type="image/webp">
+    <img src="assets/img/looks/008_ms_mt_men.jpg" alt="Look 08" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">08 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 09">
+  <picture>
+    <source srcset="assets/img/looks/009_ls_mt_men.webp" type="image/webp">
+    <img src="assets/img/looks/009_ls_mt_men.jpg" alt="Look 09" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">09 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 10">
+  <picture>
+    <source srcset="assets/img/looks/010_hs_mt_men.webp" type="image/webp">
+    <img src="assets/img/looks/010_hs_mt_men.jpg" alt="Look 10" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">10 / 20</div>
+</section>
+
+<!-- Women's Tee (4) -->
+<section class="section look" aria-label="Look 11">
+  <picture>
+    <source srcset="assets/img/looks/011_ms_wt_women.webp" type="image/webp">
+    <img src="assets/img/looks/011_ms_wt_women.jpg" alt="Look 11" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">11 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 12">
+  <picture>
+    <source srcset="assets/img/looks/012_hs_wt_women.webp" type="image/webp">
+    <img src="assets/img/looks/012_hs_wt_women.jpg" alt="Look 12" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">12 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 13">
+  <picture>
+    <source srcset="assets/img/looks/013_ls_wt_women.webp" type="image/webp">
+    <img src="assets/img/looks/013_ls_wt_women.jpg" alt="Look 13" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">13 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 14">
+  <picture>
+    <source srcset="assets/img/looks/014_ms_wt_women.webp" type="image/webp">
+    <img src="assets/img/looks/014_ms_wt_women.jpg" alt="Look 14" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">14 / 20</div>
+</section>
+
+<!-- Men's Slip-on (3) -->
+<section class="section look" aria-label="Look 15">
+  <picture>
+    <source srcset="assets/img/looks/015_hs_ms_men.webp" type="image/webp">
+    <img src="assets/img/looks/015_hs_ms_men.jpg" alt="Look 15" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">15 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 16">
+  <picture>
+    <source srcset="assets/img/looks/016_ms_ms_men.webp" type="image/webp">
+    <img src="assets/img/looks/016_ms_ms_men.jpg" alt="Look 16" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">16 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 17">
+  <picture>
+    <source srcset="assets/img/looks/017_ls_ms_men.webp" type="image/webp">
+    <img src="assets/img/looks/017_ls_ms_men.jpg" alt="Look 17" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">17 / 20</div>
+</section>
+
+<!-- Women's Slip-on (3) -->
+<section class="section look" aria-label="Look 18">
+  <picture>
+    <source srcset="assets/img/looks/018_ms_ws_women.webp" type="image/webp">
+    <img src="assets/img/looks/018_ms_ws_women.jpg" alt="Look 18" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">18 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 19">
+  <picture>
+    <source srcset="assets/img/looks/019_hs_ws_women.webp" type="image/webp">
+    <img src="assets/img/looks/019_hs_ws_women.jpg" alt="Look 19" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">19 / 20</div>
+</section>
+
+<section class="section look" aria-label="Look 20">
+  <picture>
+    <source srcset="assets/img/looks/020_ls_ws_women.webp" type="image/webp">
+    <img src="assets/img/looks/020_ls_ws_women.jpg" alt="Look 20" loading="lazy" decoding="async">
+  </picture>
+  <div class="time">20 / 20</div>
+</section>
 
 <!-- FINAL -->
-<section class="section final">
-  <a href="https://www.tcda.shop/" target="_blank" rel="noopener">
-    View the Collection
-  </a>
+<section class="section final" aria-label="Final">
+  <div style="text-align:left; max-width: 720px;">
+    <a href="https://www.tcda.shop/" target="_blank" rel="noopener">View the Collection</a>
+    <div class="note">A quiet exit. The color stays.</div>
+  </div>
 </section>
 
+<div class="scroll-hint" aria-hidden="true">↓</div>
+
 <script>
-/* ===== Minimal JS : IntersectionObserver only ===== */
+/* ===== Minimal JS: IntersectionObserver only + tiny hint hide ===== */
 (() => {
-  const sections = document.querySelectorAll('.look');
+  const looks = document.querySelectorAll('.look');
+  const hint = document.querySelector('.scroll-hint');
 
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-      }
-    });
-  }, {
-    threshold: 0.35
-  });
+    for (const e of entries) {
+      if (e.isIntersecting) e.target.classList.add('is-visible');
+    }
+  }, { threshold: 0.22, rootMargin: "0px 0px -10% 0px" });
 
-  sections.forEach(sec => io.observe(sec));
+  looks.forEach(sec => io.observe(sec));
+
+  // hide hint after first interaction (no heavy scroll logic)
+  const hideHint = () => {
+    if (!hint) return;
+    hint.classList.add('is-hidden');
+    window.removeEventListener('scroll', hideHint);
+    window.removeEventListener('touchstart', hideHint);
+    window.removeEventListener('wheel', hideHint);
+  };
+  window.addEventListener('scroll', hideHint, { passive: true });
+  window.addEventListener('touchstart', hideHint, { passive: true });
+  window.addEventListener('wheel', hideHint, { passive: true });
 })();
 </script>
 
