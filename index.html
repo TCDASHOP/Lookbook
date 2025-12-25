@@ -1,191 +1,62 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LOOKBOOK | SAIREN COLOR ARCHIVE</title>
-  <meta name="description" content="LOOKBOOK | SAIREN COLOR ARCHIVE" />
+  <meta name="color-scheme" content="dark" />
+
+  <title>LOOKBOOK ISSUE 001 | SAIREN COLOR ARCHIVE</title>
+  <meta name="description" content="Digital Art Lookbook — SAIREN COLOR ARCHIVE" />
+
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-
-  <!-- COVER（表紙） -->
+  <!-- COVER -->
   <header class="cover" id="cover" aria-label="Cover">
-    <div class="cover__bg" aria-hidden="true"></div>
-
     <div class="cover__inner">
-      <div class="cover__kicker">LOOKBOOK</div>
+      <div class="cover__issue">ISSUE 001</div>
 
       <h1 class="cover__title">
         SAIREN<br>
         COLOR ARCHIVE
       </h1>
 
-      <p class="cover__lead">Color arrives before language.</p>
-
-      <div class="cover__rule" aria-hidden="true"></div>
-
-      <div class="cover__hint" aria-hidden="true">
-        <span class="cover__dot"></span>
-        <span class="cover__text">SCROLL</span>
+      <div class="cover__meta">
+        <span id="issueDate">2025.12</span>
+        <span>Digital Art Lookbook</span>
       </div>
+
+      <p class="cover__line">Color arrives before language.</p>
+
+      <div class="cover__scroll" aria-hidden="true">SCROLL</div>
     </div>
   </header>
 
-  <!-- カウンター -->
-  <div class="counter is-hidden" aria-live="polite">
-    <span id="current">01</span> / <span id="total">20</span>
+  <!-- COUNTER -->
+  <div class="counter" aria-live="polite">
+    <span id="current">00</span>
+    <span class="sep">—</span>
+    <span id="total">00</span>
   </div>
 
-  <!-- LOOKS -->
-  <main class="stack" id="stack" aria-label="Lookbook">
-    <!-- 01–03 Zip Hoodie（Unisex） -->
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/001_hs_zh_unisex.webp" type="image/webp">
-        <img src="assets/img/looks/001_hs_zh_unisex.jpg" alt="LOOK 01" loading="lazy" decoding="async">
-      </picture>
-    </figure>
+  <!-- STATUS -->
+  <div class="state" id="state" aria-live="polite">Loading…</div>
 
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/002_ms_zh_unisex.webp" type="image/webp">
-        <img src="assets/img/looks/002_ms_zh_unisex.jpg" alt="LOOK 02" loading="lazy" decoding="async">
-      </picture>
-    </figure>
+  <!-- PAGES -->
+  <main class="pages" id="pages" aria-label="Lookbook pages"></main>
 
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/003_ls_zh_unisex.webp" type="image/webp">
-        <img src="assets/img/looks/003_ls_zh_unisex.jpg" alt="LOOK 03" loading="lazy" decoding="async">
-      </picture>
-    </figure>
+  <!-- BACK COVER -->
+  <footer class="backcover" aria-label="Back cover">
+    <div class="backcover__inner">
+      <div class="backcover__title">SAIREN COLOR ARCHIVE</div>
+      <div class="backcover__line">This archive continues to grow.</div>
 
-    <!-- 04–06 Unisex Hoodie -->
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/004_ms_uh_unisex.webp" type="image/webp">
-        <img src="assets/img/looks/004_ms_uh_unisex.jpg" alt="LOOK 04" loading="lazy" decoding="async">
-      </picture>
-    </figure>
+      <div class="backcover__stats" id="stats" aria-live="polite"></div>
 
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/005_hs_uh_unisex.webp" type="image/webp">
-        <img src="assets/img/looks/005_hs_uh_unisex.jpg" alt="LOOK 05" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/006_ls_uh_unisex.webp" type="image/webp">
-        <img src="assets/img/looks/006_ls_uh_unisex.jpg" alt="LOOK 06" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <!-- 07–10 Men’s Crew Neck T-Shirt -->
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/007_hs_mt_men.webp" type="image/webp">
-        <img src="assets/img/looks/007_hs_mt_men.jpg" alt="LOOK 07" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/008_ms_mt_men.webp" type="image/webp">
-        <img src="assets/img/looks/008_ms_mt_men.jpg" alt="LOOK 08" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/009_ls_mt_men.webp" type="image/webp">
-        <img src="assets/img/looks/009_ls_mt_men.jpg" alt="LOOK 09" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/010_hs_mt_men.webp" type="image/webp">
-        <img src="assets/img/looks/010_hs_mt_men.jpg" alt="LOOK 10" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <!-- 11–14 Women’s Crew Neck T-Shirt -->
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/011_ms_wt_women.webp" type="image/webp">
-        <img src="assets/img/looks/011_ms_wt_women.jpg" alt="LOOK 11" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/012_hs_wt_women.webp" type="image/webp">
-        <img src="assets/img/looks/012_hs_wt_women.jpg" alt="LOOK 12" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/013_ls_wt_women.webp" type="image/webp">
-        <img src="assets/img/looks/013_ls_wt_women.jpg" alt="LOOK 13" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/014_ms_wt_women.webp" type="image/webp">
-        <img src="assets/img/looks/014_ms_wt_women.jpg" alt="LOOK 14" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <!-- 15–17 Men’s Slip-On -->
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/015_hs_ms_men.webp" type="image/webp">
-        <img src="assets/img/looks/015_hs_ms_men.jpg" alt="LOOK 15" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/016_ms_ms_men.webp" type="image/webp">
-        <img src="assets/img/looks/016_ms_ms_men.jpg" alt="LOOK 16" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/017_ls_ms_men.webp" type="image/webp">
-        <img src="assets/img/looks/017_ls_ms_men.jpg" alt="LOOK 17" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <!-- 18–20 Women’s Slip-On -->
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/018_ms_ws_women.webp" type="image/webp">
-        <img src="assets/img/looks/018_ms_ws_women.jpg" alt="LOOK 18" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/019_hs_ws_women.webp" type="image/webp">
-        <img src="assets/img/looks/019_hs_ws_women.jpg" alt="LOOK 19" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-
-    <figure class="look">
-      <picture>
-        <source srcset="assets/img/looks/020_ls_ws_women.webp" type="image/webp">
-        <img src="assets/img/looks/020_ls_ws_women.jpg" alt="LOOK 20" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-  </main>
+      <a class="backcover__top" href="#cover">Back to cover</a>
+    </div>
+  </footer>
 
   <script src="assets/js/app.js" defer></script>
 </body>
