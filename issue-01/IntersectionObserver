@@ -1,0 +1,11 @@
+const pages = document.querySelectorAll('.page');
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{ threshold:0.3 });
+
+pages.forEach(p=>observer.observe(p));
