@@ -1,7 +1,11 @@
 {
   "meta": {
     "site": "SAIREN COLOR ARCHIVE",
-    "type": "LOOKBOOK_ARCHIVE"
+    "type": "LOOKBOOK_ARCHIVE",
+    "issue": {
+      "year": 2026,
+      "no": 1
+    }
   },
   "items": [
     { "id": "look-001", "title": "LOOK 01", "year": 2025, "month": 12, "category": "Zip Hoodie (Unisex)", "tags": ["hs","zip-hoodie","unisex"], "webp": "assets/img/looks/001_hs_zh_unisex.webp", "jpg": "assets/img/looks/001_hs_zh_unisex.jpg" },
