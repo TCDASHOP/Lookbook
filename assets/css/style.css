@@ -2,6 +2,7 @@
   --bg:#000;
   --fg:rgba(255,255,255,.92);
   --muted:rgba(255,255,255,.46);
+  --muted2:rgba(255,255,255,.34);
   --line:rgba(255,255,255,.08);
   --maxW: 880px;
 }
@@ -60,7 +61,7 @@ body{
   margin-top: 40px;
   font-size: 10px;
   letter-spacing: .44em;
-  color: rgba(255,255,255,.34);
+  color: var(--muted2);
 }
 
 /* ===== COUNTER ===== */
@@ -91,7 +92,6 @@ body{
   display: grid;
   place-items: center;
   padding: 64px 0 56px;
-  border-top: 1px solid transparent;
 }
 .page__inner{
   width: min(var(--maxW), 92vw);
@@ -105,7 +105,7 @@ body{
   transform: translateY(0);
 }
 
-/* ノンブル（雑誌のページ番号） */
+/* NOMBRES */
 .page__number{
   position: absolute;
   top: -30px;
@@ -115,7 +115,7 @@ body{
   color: var(--muted);
 }
 
-/* キャプション（最小） */
+/* Minimal caption */
 .page__caption{
   margin-top: 12px;
   display:flex;
@@ -128,9 +128,7 @@ body{
   padding-top: 10px;
   flex-wrap: wrap;
 }
-.page__caption span{
-  white-space: nowrap;
-}
+.page__caption span{ white-space: nowrap; }
 
 .page picture, .page img{
   display:block;
@@ -138,7 +136,7 @@ body{
 }
 .page img{
   height: auto;
-  object-fit: contain; /* 作品を切らない */
+  object-fit: contain;
   background:#000;
 }
 
