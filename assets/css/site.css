@@ -79,3 +79,13 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
   color:var(--muted);
   border-top:1px solid var(--hair);
 }
+/* --- Fix: tap/click/input blocked by overlay layers --- */
+.overlay,
+.cover,
+.magazine-ui {
+  pointer-events: none !important;
+}
+
+input, button, a {
+  pointer-events: auto !important;
+}
