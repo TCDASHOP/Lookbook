@@ -1,49 +1,47 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<title>COLOR AS TIME – Issue 01 | SAIREN COLOR ARCHIVE</title>
+<meta name="description" content="Wearable art, archived as a magazine. COLOR AS TIME Issue 01 (2026).">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://look.sairencolorarchive.com/">
 
-  <title>COLOR AS TIME — 2026 Issue 01 | SAIREN COLOR ARCHIVE LOOKBOOK</title>
-  <meta name="description" content="COLOR AS TIME — SAIREN COLOR ARCHIVE LOOKBOOK. 2026 Issue 01. Wearable art as a visual magazine." />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://look.sairencolorarchive.com/" />
-
-  <!-- OG -->
-  <meta property="og:title" content="COLOR AS TIME — 2026 Issue 01" />
-  <meta property="og:description" content="SAIREN COLOR ARCHIVE LOOKBOOK. A magazine-style visual archive of wearable art." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://look.sairencolorarchive.com/" />
-  <!-- ここはあなたの実ファイルに合わせて。無ければ一旦このままでOK（後で差し替え） -->
-  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og.jpg" />
-
-  <link rel="stylesheet" href="assets/css/style.css" />
+<style>
+html,body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  height:100%;
+}
+.cover{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.cover small{opacity:.6; letter-spacing:.1em;}
+.cover h1{margin:12px 0; font-size:32px; letter-spacing:.08em;}
+.cover a{
+  margin-top:24px;
+  text-decoration:none;
+  color:#9f7cff;
+  letter-spacing:.12em;
+}
+</style>
 </head>
 
-<body class="cover">
-  <main class="cover-inner" aria-label="Lookbook Cover">
-    <p class="cover-kicker">SAIREN COLOR ARCHIVE</p>
-
-    <div class="cover-stack">
-      <p class="cover-year">2026</p>
-      <h1 class="cover-title">COLOR AS TIME</h1>
-      <p class="cover-issue">Issue 01</p>
-    </div>
-
-    <p class="cover-lead">
-      Wearable art, archived as a magazine.
-    </p>
-
-    <!-- ②で作った本編へ -->
-    <a class="cover-enter" href="issue-2026-01.html" aria-label="Enter Lookbook Issue 01">
-      ENTER
-    </a>
-
-    <p class="cover-meta">
-      Scroll is the binding. Images are the pages.
-    </p>
-  </main>
+<body>
+<div class="cover">
+  <small>SAIREN COLOR ARCHIVE</small>
+  <small>2026</small>
+  <h1>COLOR AS TIME</h1>
+  <small>Issue 01</small>
+  <p>Wearable art, archived as a magazine.</p>
+  <a href="/issue-01/">ENTER</a>
+</div>
 </body>
 </html>
