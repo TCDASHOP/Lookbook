@@ -3,57 +3,69 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>COLOR AS TIME — Issue 01 | Lookbook</title>
-  <meta name="description" content="COLOR AS TIME Issue 01. Scroll is the binding. Images are the pages.">
+
+  <!-- SEO / BASIC -->
+  <title>COLOR AS TIME – Issue 01 | SAIREN COLOR ARCHIVE</title>
+  <meta name="description" content="COLOR AS TIME Issue 01. Wearable art, archived as a magazine. Scroll is the binding. Images are the pages.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://look.sairencolorarchive.com/issue-01/">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="COLOR AS TIME — Issue 01">
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="COLOR AS TIME – Issue 01">
   <meta property="og:description" content="Wearable art, archived as a magazine.">
-  <meta property="og:type" content="article">
+  <meta property="og:image" content="/assets/img/og/og-issue-01.jpg">
   <meta property="og:url" content="https://look.sairencolorarchive.com/issue-01/">
-  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og-issue-01.jpg">
 
-  <meta name="theme-color" content="#050609">
-  <link rel="icon" href="/assets/img/ui/favicon.png">
-
+  <!-- STYLE -->
   <link rel="stylesheet" href="style.css">
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "CreativeWork", "name": "COLOR AS TIME — Issue 01", "datePublished": "2026-01-01", "dateModified": "2025-12-27", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "SAIREN COLOR ARCHIVE", "url": "https://look.sairencolorarchive.com"}, "url": "https://look.sairencolorarchive.com/issue-01/"}
-  </script>
 </head>
+
 <body>
 
-  <main class="magazine" id="top">
+<!-- UI OVERLAY（操作用） -->
+<nav class="magazine-ui">
+  <button class="prev" aria-label="Previous page">‹</button>
+  <button class="next" aria-label="Next page">›</button>
+</nav>
 
-    <!-- COVER -->
-    <section class="cover" aria-label="Cover">
-      <div class="cover-inner">
-        <div class="kicker">
-          <span>SAIREN COLOR ARCHIVE</span>
-          <span>2026</span>
-        </div>
+<main class="magazine">
 
-        <h1>COLOR AS TIME</h1>
-        <p class="issue">Issue 01</p>
+  <!-- ===================== -->
+  <!-- COVER / 表紙 -->
+  <!-- ===================== -->
+  <section class="cover page">
+    <div class="cover-inner">
+      <p class="masthead">SAIREN COLOR ARCHIVE</p>
 
-        <p class="lead">Wearable art, archived as a magazine. Minimal words. Maximum signal.</p>
+      <h1 class="title">COLOR AS TIME</h1>
 
-        <a class="enter" href="#pages" data-enter>ENTER</a>
+      <p class="issue">Issue 01</p>
+      <p class="year">2026</p>
 
-        <p class="note">Scroll is the binding. Images are the pages.</p>
-      </div>
-    </section>
+      <p class="lead">
+        Wearable art, archived as a magazine.<br>
+        Minimal words. Maximum signal.
+      </p>
 
-    <div id="pages" data-firstpage></div>
+      <a href="#look-01" class="enter">ENTER</a>
 
+      <p class="note">
+        Scroll is the binding.<br>
+        Images are the pages.
+      </p>
+    </div>
+  </section>
 
-  <section class="page" aria-label="LOOK 01">
+  <!-- ===================== -->
+  <!-- LOOK 01 -->
+  <!-- ===================== -->
+  <section class="page" id="look-01">
     <figure>
       <picture>
         <source srcset="/assets/img/looks/001_hs_zh_unisex.webp" type="image/webp">
-        <img src="/assets/img/looks/001_hs_zh_unisex.jpg" alt="LOOK 01 — Zip Hoodie (hs)" loading="lazy" decoding="async">
+        <img src="/assets/img/looks/001_hs_zh_unisex.jpg"
+             alt="Zip Hoodie Unisex high shot">
       </picture>
       <figcaption>
         <span>LOOK 01</span>
@@ -62,273 +74,21 @@
     </figure>
   </section>
 
-  <section class="page" aria-label="LOOK 02">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/002_ms_zh_unisex.webp" type="image/webp">
-        <img src="/assets/img/looks/002_ms_zh_unisex.jpg" alt="LOOK 02 — Zip Hoodie (ms)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 02</span>
-        <span>Zip Hoodie / ms</span>
-      </figcaption>
-    </figure>
+  <!-- ここに LOOK 02〜20 を同形式で追加 -->
+  <!-- ファイル名はあなたの一覧そのまま使用 -->
+
+  <!-- ===================== -->
+  <!-- BACK COVER / 裏表紙 -->
+  <!-- ===================== -->
+  <section class="page end">
+    <p style="opacity:.6; text-align:center;">
+      End of Issue 01<br>
+      SAIREN COLOR ARCHIVE
+    </p>
   </section>
 
-  <section class="page" aria-label="LOOK 03">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/003_ls_zh_unisex.webp" type="image/webp">
-        <img src="/assets/img/looks/003_ls_zh_unisex.jpg" alt="LOOK 03 — Zip Hoodie (ls)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 03</span>
-        <span>Zip Hoodie / ls</span>
-      </figcaption>
-    </figure>
-  </section>
+</main>
 
-  <section class="page" aria-label="LOOK 04">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/004_ms_uh_unisex.webp" type="image/webp">
-        <img src="/assets/img/looks/004_ms_uh_unisex.jpg" alt="LOOK 04 — Unisex Hoodie (ms)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 04</span>
-        <span>Unisex Hoodie / ms</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 05">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/005_hs_uh_unisex.webp" type="image/webp">
-        <img src="/assets/img/looks/005_hs_uh_unisex.jpg" alt="LOOK 05 — Unisex Hoodie (hs)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 05</span>
-        <span>Unisex Hoodie / hs</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 06">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/006_ls_uh_unisex.webp" type="image/webp">
-        <img src="/assets/img/looks/006_ls_uh_unisex.jpg" alt="LOOK 06 — Unisex Hoodie (ls)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 06</span>
-        <span>Unisex Hoodie / ls</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 07">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/007_hs_mt_men.webp" type="image/webp">
-        <img src="/assets/img/looks/007_hs_mt_men.jpg" alt="LOOK 07 — Men’s Crew Neck T-Shirt (hs)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 07</span>
-        <span>Men’s Crew Neck T-Shirt / hs</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 08">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/008_ms_mt_men.webp" type="image/webp">
-        <img src="/assets/img/looks/008_ms_mt_men.jpg" alt="LOOK 08 — Men’s Crew Neck T-Shirt (ms)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 08</span>
-        <span>Men’s Crew Neck T-Shirt / ms</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 09">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/009_ls_mt_men.webp" type="image/webp">
-        <img src="/assets/img/looks/009_ls_mt_men.jpg" alt="LOOK 09 — Men’s Crew Neck T-Shirt (ls)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 09</span>
-        <span>Men’s Crew Neck T-Shirt / ls</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 10">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/010_hs_mt_men.webp" type="image/webp">
-        <img src="/assets/img/looks/010_hs_mt_men.jpg" alt="LOOK 10 — Men’s Crew Neck T-Shirt (hs)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 10</span>
-        <span>Men’s Crew Neck T-Shirt / hs</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 11">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/011_ms_wt_women.webp" type="image/webp">
-        <img src="/assets/img/looks/011_ms_wt_women.jpg" alt="LOOK 11 — Women’s Crew Neck T-Shirt (ms)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 11</span>
-        <span>Women’s Crew Neck T-Shirt / ms</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 12">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/012_hs_wt_women.webp" type="image/webp">
-        <img src="/assets/img/looks/012_hs_wt_women.jpg" alt="LOOK 12 — Women’s Crew Neck T-Shirt (hs)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 12</span>
-        <span>Women’s Crew Neck T-Shirt / hs</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 13">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/013_ls_wt_women.webp" type="image/webp">
-        <img src="/assets/img/looks/013_ls_wt_women.jpg" alt="LOOK 13 — Women’s Crew Neck T-Shirt (ls)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 13</span>
-        <span>Women’s Crew Neck T-Shirt / ls</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 14">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/014_ms_wt_women.webp" type="image/webp">
-        <img src="/assets/img/looks/014_ms_wt_women.jpg" alt="LOOK 14 — Women’s Crew Neck T-Shirt (ms)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 14</span>
-        <span>Women’s Crew Neck T-Shirt / ms</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 15">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/015_hs_ms_men.webp" type="image/webp">
-        <img src="/assets/img/looks/015_hs_ms_men.jpg" alt="LOOK 15 — Men’s Slip-On Canvas Shoes (hs)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 15</span>
-        <span>Men’s Slip-On Canvas Shoes / hs</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 16">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/016_ms_ms_men.webp" type="image/webp">
-        <img src="/assets/img/looks/016_ms_ms_men.jpg" alt="LOOK 16 — Men’s Slip-On Canvas Shoes (ms)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 16</span>
-        <span>Men’s Slip-On Canvas Shoes / ms</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 17">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/017_ls_ms_men.webp" type="image/webp">
-        <img src="/assets/img/looks/017_ls_ms_men.jpg" alt="LOOK 17 — Men’s Slip-On Canvas Shoes (ls)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 17</span>
-        <span>Men’s Slip-On Canvas Shoes / ls</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 18">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/018_ms_ws_women.webp" type="image/webp">
-        <img src="/assets/img/looks/018_ms_ws_women.jpg" alt="LOOK 18 — Women’s Slip-On Canvas Shoes (ms)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 18</span>
-        <span>Women’s Slip-On Canvas Shoes / ms</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 19">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/019_hs_ws_women.webp" type="image/webp">
-        <img src="/assets/img/looks/019_hs_ws_women.jpg" alt="LOOK 19 — Women’s Slip-On Canvas Shoes (hs)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 19</span>
-        <span>Women’s Slip-On Canvas Shoes / hs</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="page" aria-label="LOOK 20">
-    <figure>
-      <picture>
-        <source srcset="/assets/img/looks/020_ls_ws_women.webp" type="image/webp">
-        <img src="/assets/img/looks/020_ls_ws_women.jpg" alt="LOOK 20 — Women’s Slip-On Canvas Shoes (ls)" loading="lazy" decoding="async">
-      </picture>
-      <figcaption>
-        <span>LOOK 20</span>
-        <span>Women’s Slip-On Canvas Shoes / ls</span>
-      </figcaption>
-    </figure>
-  </section>
-
-
-    <!-- BACK COVER -->
-    <section class="page" aria-label="Back cover">
-      <p style="opacity:.6; text-align:center; margin:0; padding:64px 12px; line-height:1.8;">
-        End of Issue 01<br>
-        SAIREN COLOR ARCHIVE
-      </p>
-    </section>
-
-  </main>
-
-  <!-- Floating UI -->
-  <div class="ui" aria-hidden="true">
-    <div class="ui-inner">
-      <div class="pill"><span data-counter>00 / 00</span></div>
-      <div class="pill"><span data-title>COLOR AS TIME — Issue 01</span></div>
-      <div class="pill"><a href="/" rel="nofollow">Archive</a></div>
-    </div>
-  </div>
-
-  <script src="script.js" defer></script>
+<script src="script.js"></script>
 </body>
 </html>
