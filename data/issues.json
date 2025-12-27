@@ -1,17 +1,12 @@
 {
-  "site": {
-    "name": "SAIREN COLOR ARCHIVE",
-    "baseUrl": "https://look.sairencolorarchive.com"
-  },
   "issues": [
     {
-      "year": 2026,
-      "issue": 1,
-      "slug": "issue-01",
+      "issueId": "issue-01",
+      "year": "2026",
+      "issueNo": "01",
       "title": "COLOR AS TIME",
-      "url": "https://look.sairencolorarchive.com/issue-01/",
-      "updated": "2025-12-27",
-      "looks": 20
+      "path": "/issue-01/",
+      "og": "/og-issue-01.jpg"
     }
   ]
 }
