@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>COLOR AS TIME — Issue 01 | Lookbook</title>
+  <meta name="description" content="COLOR AS TIME Issue 01. Scroll is the binding. Images are the pages." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://look.sairencolorarchive.com/issue-01/" />
+
+  <!-- OG (Issue) -->
+  <meta property="og:title" content="COLOR AS TIME — Issue 01" />
+  <meta property="og:description" content="Wearable art, archived as a magazine." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://look.sairencolorarchive.com/issue-01/" />
+  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og-issue-01.jpg" />
+
+  <link rel="icon" href="/assets/img/ui/favicon.png" />
+  <link rel="stylesheet" href="/issue-01/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">SAIREN COLOR ARCHIVE</div>
+    <div class="topbar-right">
+      <a class="toplink" href="/" aria-label="Lookbook Archive">Lookbook Archive</a>
+    </div>
+  </header>
+
+  <main id="magazine" class="magazine" aria-label="Issue 01 pages">
+    <div class="loading">Loading…</div>
+  </main>
+
+  <!-- UI (must not block taps on iPad) -->
+  <div class="magazine-ui" aria-hidden="false">
+    <button class="navbtn prev" id="btnPrev" type="button" aria-label="Previous page">‹</button>
+    <button class="navbtn next" id="btnNext" type="button" aria-label="Next page">›</button>
+    <a class="navbtn home" href="/" aria-label="Archive">⌂</a>
+
+    <div class="pill left" id="pillIndex">00 / 00</div>
+    <div class="pill center" id="pillTitle">COLOR AS TIME — Issue 01</div>
+    <div class="pill right"><a class="pill-link" href="/" aria-label="Archive link">Archive</a></div>
+  </div>
+
+  <script src="/issue-01/script.js"></script>
+</body>
+</html>
