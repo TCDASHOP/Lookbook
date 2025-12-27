@@ -1,51 +1,38 @@
 <!doctype html>
-<html lang="en" data-issue-id="issue-01" data-issue-json="/data/issue-01.json">
+<html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>COLOR AS TIME — Issue 01 | SAIREN COLOR ARCHIVE</title>
-  <meta name="description" content="Wearable art, archived as a magazine. Minimal words. Maximum signal." />
-
-  <!-- OG -->
-  <meta property="og:title" content="COLOR AS TIME — Issue 01" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://look.sairencolorarchive.com/issue-01/" />
-  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og.jpg" />
-
-  <link rel="icon" href="/assets/img/ui/favicon.png" />
-  <link rel="stylesheet" href="/issue-01/style.css" />
+  <meta name="description" content="Issue 01. Scroll is the binding. Images are the pages." />
+  <link rel="stylesheet" href="/issue-01/assets/css/issue.css" />
 </head>
-
 <body>
-  <header class="topbar">
-    <a class="brand" href="/">SAIREN COLOR ARCHIVE</a>
-    <a class="archive-link" href="/">Lookbook Archive</a>
+  <header class="bar">
+    <a class="bar__brand" href="https://sairencolorarchive.com/">SAIREN COLOR ARCHIVE</a>
+    <a class="bar__archive" href="/">Archive</a>
   </header>
 
-  <main id="pages" class="pages" aria-label="Issue pages"></main>
-
-  <!-- Fixed UI -->
-  <div class="hud" aria-hidden="false">
-    <button class="navbtn prev" id="prevBtn" aria-label="Previous page" title="Previous (←)">‹</button>
-    <button class="navbtn next" id="nextBtn" aria-label="Next page" title="Next (→)">›</button>
-
-    <div class="page-indicator" id="pageIndicator" aria-live="polite">01 / 01</div>
-    <div class="issue-pill" id="issuePill">ISSUE-01</div>
-
-    <button class="hud-btn" id="toggleUiBtn" aria-label="Toggle UI" title="Toggle UI">⌁</button>
-    <a class="hud-btn" id="archiveBtn" href="/" aria-label="Archive" title="Archive">Archive</a>
-
-    <div class="scroll-track" id="scrollTrack" aria-hidden="true">
-      <div class="scroll-thumb" id="scrollThumb"></div>
-    </div>
+  <div class="hud" aria-hidden="true">
+    <button class="hud__btn" id="prevBtn" title="Prev">‹</button>
+    <div class="hud__count"><span id="cur">01</span> / <span id="total">--</span></div>
+    <button class="hud__btn" id="nextBtn" title="Next">›</button>
   </div>
+
+  <main id="pages" class="pages" aria-label="Issue pages">
+    <!-- JSで生成。JSが死んでも下のnoscriptが出る -->
+  </main>
 
   <noscript>
     <div class="noscript">
-      JavaScript is required to render this issue.
+      JavaScript が無効のため、簡易表示です。<br/>
+      <a href="/">Archiveへ戻る</a>
     </div>
   </noscript>
 
-  <script src="/issue-01/script.js" defer></script>
+  <script>
+    window.__ISSUE_BASE__ = "/issue-01";   // Issue 02にしたらここだけ変える
+  </script>
+  <script src="/issue-01/assets/js/issue.js" defer></script>
 </body>
 </html>
