@@ -1,266 +1,352 @@
-/* =========================================================
-   SAIREN COLOR ARCHIVE – LOOKBOOK / Issue 01
-   style.css (replace entire file)
-   ========================================================= */
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-/* -------- base -------- */
-:root{
-  --bg: #0b0c10;
-  --text: rgba(255,255,255,.88);
-  --muted: rgba(255,255,255,.55);
-  --line: rgba(255,255,255,.10);
+  <title>COLOR AS TIME — Issue 01 | SAIREN COLOR ARCHIVE Lookbook (2026)</title>
+  <meta name="description" content="COLOR AS TIME — Issue 01 (2026). Wearable art, archived as a magazine. Scroll is the binding. Images are the pages.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://look.sairencolorarchive.com/issue-01/">
 
-  --card: rgba(255,255,255,.04);
-  --card2: rgba(255,255,255,.02);
+  <!-- OG -->
+  <meta property="og:title" content="COLOR AS TIME — Issue 01 (2026)">
+  <meta property="og:description" content="Wearable art, archived as a magazine. Scroll is the binding. Images are the pages.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://look.sairencolorarchive.com/issue-01/">
+  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og-issue-01.jpg">
 
-  --radius: 22px;
+  <meta name="theme-color" content="#070a0f">
+  <link rel="icon" href="/assets/img/ui/favicon.png">
+  <link rel="stylesheet" href="style.css">
 
-  --maxw: 980px;
-  --padX: 20px;
-  --padY: 22px;
-}
-
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-body{
-  margin:0;
-  background: radial-gradient(1200px 800px at 50% -10%, rgba(255,255,255,.06), transparent 60%),
-              radial-gradient(900px 600px at 10% 20%, rgba(120,140,255,.05), transparent 60%),
-              radial-gradient(900px 600px at 90% 60%, rgba(255,120,200,.04), transparent 60%),
-              var(--bg);
-  color:var(--text);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-/* anchor */
-a{ color:inherit; text-decoration:none; }
-a:focus, button:focus{
-  outline: 2px solid rgba(255,255,255,.22);
-  outline-offset: 3px;
-  border-radius: 12px;
-}
-
-/* -------- layout -------- */
-.magazine{
-  width: min(var(--maxw), calc(100% - var(--padX)*2));
-  margin: 26px auto 88px;
-  display: grid;
-  gap: 26px;
-}
-
-/* -------- floating UI (prev/next) -------- */
-.magazine-ui{
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 18px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 16px;
-  z-index: 40;
-
-  /* 重要：UI自体はクリックできる必要あり */
-  pointer-events: none;
-}
-.magazine-ui button{
-  pointer-events: auto;
-  width: 54px;
-  height: 42px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(0,0,0,.35);
-  color: var(--text);
-  font-size: 22px;
-  line-height: 1;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.magazine-ui button:active{
-  transform: translateY(1px);
-}
-
-/* -------- page card -------- */
-.page{
-  background: linear-gradient(180deg, var(--card), var(--card2));
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  position: relative;
-
-  box-shadow:
-    0 12px 60px rgba(0,0,0,.45),
-    inset 0 1px 0 rgba(255,255,255,.06);
-
-  /* ここは “押せない問題” 回避のため触らない */
-}
-
-/* image block */
-figure{
-  margin:0;
-  display:grid;
-  gap: 0;
-}
-picture, img{
-  display:block;
-  width:100%;
-  height:auto;
-}
-
-/* frame feel */
-figure picture{
-  background: rgba(255,255,255,.02);
-}
-
-/* caption */
-figcaption{
-  display:flex;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 14px 18px 16px;
-  font-size: 12px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-top: 1px solid var(--line);
-}
-
-/* -------- cover / 表紙 -------- */
-.cover{
-  min-height: min(72vh, 720px);
-  display:grid;
-  place-items:center;
-}
-
-/* 表紙の“見た目レイヤー”だけクリック無効化（安全） */
-.cover::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(1200px 700px at 50% 0%, rgba(255,255,255,.05), transparent 60%),
-    radial-gradient(900px 600px at 80% 60%, rgba(120,140,255,.06), transparent 55%),
-    radial-gradient(800px 520px at 20% 60%, rgba(255,120,200,.05), transparent 55%);
-  pointer-events: none; /* ここがポイント */
-}
-
-/* cover content */
-.cover-inner{
-  width: min(720px, calc(100% - 36px));
-  padding: 36px 24px 34px;
-  position: relative;
-  z-index: 2;
-
-  /* 重要：中身は操作できるようにする */
-  pointer-events: auto;
-}
-
-.masthead{
-  margin:0 0 14px;
-  font-size: 12px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.title{
-  margin: 0;
-  font-size: clamp(34px, 6.5vw, 56px);
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-.issue{
-  margin: 10px 0 0;
-  font-size: 14px;
-  letter-spacing: .12em;
-  color: rgba(255,255,255,.70);
-}
-
-.year{
-  margin: 6px 0 0;
-  font-size: 12px;
-  letter-spacing: .22em;
-  color: rgba(255,255,255,.50);
-}
-
-.lead{
-  margin: 18px 0 18px;
-  font-size: 14px;
-  line-height: 1.75;
-  color: rgba(255,255,255,.70);
-}
-
-/* ENTER button */
-.enter{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 11px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.18);
-  background: rgba(0,0,0,.30);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  font-size: 12px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-
-  /* 重要：確実にクリック可能 */
-  pointer-events: auto;
-  cursor: pointer;
-}
-.enter:hover{
-  border-color: rgba(255,255,255,.28);
-}
-.enter:active{
-  transform: translateY(1px);
-}
-
-.note{
-  margin: 18px 0 0;
-  font-size: 12px;
-  line-height: 1.6;
-  color: rgba(255,255,255,.45);
-}
-
-/* -------- end page / 裏表紙 -------- */
-.end{
-  display:grid;
-  place-items:center;
-  padding: 56px 22px;
-  text-align:center;
-}
-
-/* -------- utility (optional) -------- */
-/* “入力できない”対策の最終保険：
-   オーバーレイやUIに pointer-events:none を掛ける場合は
-   必ず a/button/input だけ auto で戻す */
-.overlay,
-.cover,
-.magazine-ui{
-  pointer-events: none;
-}
-
-/* クリックしたい要素は戻す */
-input, button, a,
-.cover-inner, .enter{
-  pointer-events: auto;
-}
-
-/* -------- responsive -------- */
-@media (max-width: 600px){
-  .magazine{
-    margin: 18px auto 86px;
-    gap: 18px;
+  <!-- JSON-LD (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CreativeWork",
+    "name":"COLOR AS TIME — Issue 01",
+    "datePublished":"2026",
+    "isPartOf":{
+      "@type":"CollectionPage",
+      "name":"SAIREN COLOR ARCHIVE Lookbook",
+      "url":"https://look.sairencolorarchive.com/"
+    },
+    "url":"https://look.sairencolorarchive.com/issue-01/"
   }
-  figcaption{
-    padding: 12px 14px 14px;
-    font-size: 11px;
-    letter-spacing: .16em;
-  }
-  .cover-inner{
-    padding: 28px 18px 26px;
-  }
-}
+  </script>
+</head>
+<body>
+
+  <main class="magazine">
+
+    <!-- ===== Cover (表紙) ===== -->
+    <section class="page cover" id="cover">
+      <div class="cover-card">
+        <div class="cover-top">
+          <div>SAIREN COLOR ARCHIVE</div>
+          <div>2026</div>
+        </div>
+
+        <div class="cover-title">COLOR AS TIME</div>
+        <div class="cover-issue">Issue 01</div>
+
+        <p class="cover-desc">
+          Wearable art, archived as a magazine. Minimal words. Maximum signal.
+        </p>
+
+        <div class="cover-actions">
+          <a class="btn" href="#look-01">ENTER</a>
+          <a class="btn" href="/">ARCHIVE</a>
+        </div>
+
+        <div class="cover-fine">Scroll is the binding. Images are the pages.</div>
+      </div>
+    </section>
+
+    <!-- ===== LOOK 01–03 Zip Hoodie (Unisex) ===== -->
+    <section class="page" id="look-01">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/001_hs_zh_unisex.webp" type="image/webp">
+          <img src="/assets/img/looks/001_hs_zh_unisex.jpg" alt="Zip Hoodie (Unisex) / high shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 01</span>
+          <span class="right">Zip Hoodie (Unisex) / hs</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-02">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/002_ms_zh_unisex.webp" type="image/webp">
+          <img src="/assets/img/looks/002_ms_zh_unisex.jpg" alt="Zip Hoodie (Unisex) / mid shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 02</span>
+          <span class="right">Zip Hoodie (Unisex) / ms</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-03">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/003_ls_zh_unisex.webp" type="image/webp">
+          <img src="/assets/img/looks/003_ls_zh_unisex.jpg" alt="Zip Hoodie (Unisex) / long shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 03</span>
+          <span class="right">Zip Hoodie (Unisex) / ls</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== 04–06 Unisex Hoodie ===== -->
+    <section class="page" id="look-04">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/004_ms_uh_unisex.webp" type="image/webp">
+          <img src="/assets/img/looks/004_ms_uh_unisex.jpg" alt="Unisex Hoodie / mid shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 04</span>
+          <span class="right">Unisex Hoodie / ms</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-05">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/005_hs_uh_unisex.webp" type="image/webp">
+          <img src="/assets/img/looks/005_hs_uh_unisex.jpg" alt="Unisex Hoodie / high shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 05</span>
+          <span class="right">Unisex Hoodie / hs</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-06">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/006_ls_uh_unisex.webp" type="image/webp">
+          <img src="/assets/img/looks/006_ls_uh_unisex.jpg" alt="Unisex Hoodie / long shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 06</span>
+          <span class="right">Unisex Hoodie / ls</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== 07–10 Men’s Crew Neck T-Shirt ===== -->
+    <section class="page" id="look-07">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/007_hs_mt_men.webp" type="image/webp">
+          <img src="/assets/img/looks/007_hs_mt_men.jpg" alt="Men’s Crew Neck T-Shirt / high shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 07</span>
+          <span class="right">Men’s Crew Neck T-Shirt / hs</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-08">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/008_ms_mt_men.webp" type="image/webp">
+          <img src="/assets/img/looks/008_ms_mt_men.jpg" alt="Men’s Crew Neck T-Shirt / mid shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 08</span>
+          <span class="right">Men’s Crew Neck T-Shirt / ms</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-09">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/009_ls_mt_men.webp" type="image/webp">
+          <img src="/assets/img/looks/009_ls_mt_men.jpg" alt="Men’s Crew Neck T-Shirt / long shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 09</span>
+          <span class="right">Men’s Crew Neck T-Shirt / ls</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-10">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/010_hs_mt_men.webp" type="image/webp">
+          <img src="/assets/img/looks/010_hs_mt_men.jpg" alt="Men’s Crew Neck T-Shirt / high shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 10</span>
+          <span class="right">Men’s Crew Neck T-Shirt / hs</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== 11–14 Women’s Crew Neck T-Shirt ===== -->
+    <section class="page" id="look-11">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/011_ms_wt_women.webp" type="image/webp">
+          <img src="/assets/img/looks/011_ms_wt_women.jpg" alt="Women’s Crew Neck T-Shirt / mid shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 11</span>
+          <span class="right">Women’s Crew Neck T-Shirt / ms</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-12">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/012_hs_wt_women.webp" type="image/webp">
+          <img src="/assets/img/looks/012_hs_wt_women.jpg" alt="Women’s Crew Neck T-Shirt / high shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 12</span>
+          <span class="right">Women’s Crew Neck T-Shirt / hs</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-13">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/013_ls_wt_women.webp" type="image/webp">
+          <img src="/assets/img/looks/013_ls_wt_women.jpg" alt="Women’s Crew Neck T-Shirt / long shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 13</span>
+          <span class="right">Women’s Crew Neck T-Shirt / ls</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-14">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/014_ms_wt_women.webp" type="image/webp">
+          <img src="/assets/img/looks/014_ms_wt_women.jpg" alt="Women’s Crew Neck T-Shirt / mid shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 14</span>
+          <span class="right">Women’s Crew Neck T-Shirt / ms</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== 15–17 Men’s Slip-On ===== -->
+    <section class="page" id="look-15">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/015_hs_ms_men.webp" type="image/webp">
+          <img src="/assets/img/looks/015_hs_ms_men.jpg" alt="Men’s Slip-On / high shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 15</span>
+          <span class="right">Men’s Slip-On / hs</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-16">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/016_ms_ms_men.webp" type="image/webp">
+          <img src="/assets/img/looks/016_ms_ms_men.jpg" alt="Men’s Slip-On / mid shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 16</span>
+          <span class="right">Men’s Slip-On / ms</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-17">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/017_ls_ms_men.webp" type="image/webp">
+          <img src="/assets/img/looks/017_ls_ms_men.jpg" alt="Men’s Slip-On / long shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 17</span>
+          <span class="right">Men’s Slip-On / ls</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== 18–20 Women’s Slip-On ===== -->
+    <section class="page" id="look-18">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/018_ms_ws_women.webp" type="image/webp">
+          <img src="/assets/img/looks/018_ms_ws_women.jpg" alt="Women’s Slip-On / mid shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 18</span>
+          <span class="right">Women’s Slip-On / ms</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-19">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/019_hs_ws_women.webp" type="image/webp">
+          <img src="/assets/img/looks/019_hs_ws_women.jpg" alt="Women’s Slip-On / high shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 19</span>
+          <span class="right">Women’s Slip-On / hs</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="page" id="look-20">
+      <figure class="figure">
+        <picture>
+          <source srcset="/assets/img/looks/020_ls_ws_women.webp" type="image/webp">
+          <img src="/assets/img/looks/020_ls_ws_women.jpg" alt="Women’s Slip-On / long shot">
+        </picture>
+        <figcaption class="caption">
+          <span class="left">LOOK 20</span>
+          <span class="right">Women’s Slip-On / ls</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== Back cover (裏表紙) ===== -->
+    <section class="page">
+      <p style="opacity:.65; text-align:center; padding:54px 0; letter-spacing:.18em; text-transform:uppercase;">
+        End of Issue 01<br>
+        SAIREN COLOR ARCHIVE
+      </p>
+    </section>
+
+  </main>
+
+  <!-- UI pills -->
+  <div class="ui">
+    <div class="pill" id="pageCounter">00 / 21</div>
+    <div class="pill" id="lookTag">Issue 01</div>
+    <a class="pill" href="/">Archive</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
