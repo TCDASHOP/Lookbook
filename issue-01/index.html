@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-issue-id="issue-01" data-issue-json="/data/issue-01.json">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>COLOR AS TIME — Issue 01 | SAIREN COLOR ARCHIVE</title>
+  <meta name="description" content="Wearable art, archived as a magazine. Minimal words. Maximum signal." />
+
+  <!-- OG -->
+  <meta property="og:title" content="COLOR AS TIME — Issue 01" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://look.sairencolorarchive.com/issue-01/" />
+  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og.jpg" />
+
+  <link rel="icon" href="/assets/img/ui/favicon.png" />
+  <link rel="stylesheet" href="/issue-01/style.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">SAIREN COLOR ARCHIVE</a>
+    <a class="archive-link" href="/">Lookbook Archive</a>
+  </header>
+
+  <main id="pages" class="pages" aria-label="Issue pages"></main>
+
+  <!-- Fixed UI -->
+  <div class="hud" aria-hidden="false">
+    <button class="navbtn prev" id="prevBtn" aria-label="Previous page" title="Previous (←)">‹</button>
+    <button class="navbtn next" id="nextBtn" aria-label="Next page" title="Next (→)">›</button>
+
+    <div class="page-indicator" id="pageIndicator" aria-live="polite">01 / 01</div>
+    <div class="issue-pill" id="issuePill">ISSUE-01</div>
+
+    <button class="hud-btn" id="toggleUiBtn" aria-label="Toggle UI" title="Toggle UI">⌁</button>
+    <a class="hud-btn" id="archiveBtn" href="/" aria-label="Archive" title="Archive">Archive</a>
+
+    <div class="scroll-track" id="scrollTrack" aria-hidden="true">
+      <div class="scroll-thumb" id="scrollThumb"></div>
+    </div>
+  </div>
+
+  <noscript>
+    <div class="noscript">
+      JavaScript is required to render this issue.
+    </div>
+  </noscript>
+
+  <script src="/issue-01/script.js" defer></script>
+</body>
+</html>
