@@ -1,0 +1,9 @@
+*{box-sizing:border-box}
+html,body{margin:0;background:#050608;color:#eaeaea;font-family:system-ui,-apple-system,BlinkMacSystemFont}
+.magazine{min-height:100vh}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center}
+.cover-inner{text-align:center}
+.cover-inner h1{font-size:clamp(2.5rem,6vw,5rem);letter-spacing:.08em}
+.brand{opacity:.6;letter-spacing:.2em}
+.issue,.tagline{opacity:.7;margin-top:1rem}
+.back-inner{text-align:center;opacity:.6}
