@@ -1,54 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SAIREN COLOR ARCHIVE | Lookbook</title>
-  <meta name="description" content="Wearable art, archived as a magazine. Minimal words. Maximum signal." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://look.sairencolorarchive.com/" />
-
-  <!-- OG (defaults) -->
-  <meta property="og:title" content="SAIREN COLOR ARCHIVE | Lookbook" />
-  <meta property="og:description" content="Wearable art, archived as a magazine." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://look.sairencolorarchive.com/" />
-  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og-default.jpg" />
-
-  <link rel="icon" href="/assets/img/ui/favicon.png" />
-  <link rel="stylesheet" href="/style.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LOOKBOOK ARCHIVE | SAIREN COLOR ARCHIVE</title>
+  <meta name="description" content="Wearable art, archived as a magazine." />
+  <link rel="stylesheet" href="/assets/css/archive.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">SAIREN COLOR ARCHIVE</div>
-    <div class="topbar-right">
-      <a class="toplink" href="https://sairencolorarchive.com/" rel="noopener">Main Site</a>
-    </div>
+  <header class="top">
+    <a class="brand" href="https://sairencolorarchive.com/">SAIREN COLOR ARCHIVE</a>
+    <div class="sub">Lookbook Archive</div>
   </header>
 
-  <main class="archive">
-    <section class="hero">
-      <div class="hero-card">
-        <div class="hero-kicker">Lookbook Archive</div>
-        <h1 class="hero-title">COLOR AS TIME</h1>
-        <p class="hero-sub">Wearable art, archived as a magazine.</p>
-        <div class="hero-actions">
-          <a class="btn" href="/issue-01/">Open Issue 01</a>
-        </div>
-        <div class="hero-note">Scroll is the binding. Images are the pages.</div>
-      </div>
+  <main class="wrap">
+    <h1 class="title">COLOR AS TIME</h1>
+    <p class="lead">Wearable art, archived as a magazine.</p>
+
+    <section class="grid" aria-label="Issues">
+      <a class="card" href="/issue-01/">
+        <div class="card__kicker">ISSUE 01</div>
+        <div class="card__title">COLOR AS TIME</div>
+        <div class="card__meta">Open</div>
+      </a>
+
+      <!-- Issue 02 を足すときはこれをコピペして href を /issue-02/ にするだけ -->
+      <!--
+      <a class="card" href="/issue-02/">
+        <div class="card__kicker">ISSUE 02</div>
+        <div class="card__title">TITLE HERE</div>
+        <div class="card__meta">Open</div>
+      </a>
+      -->
     </section>
 
-    <section class="panel">
-      <h2 class="panel-title">Next issues</h2>
-      <p class="panel-text dim">
-        Add a new issue folder (e.g., <code>/issue-02/</code>) and link it from this page.
-      </p>
-    </section>
-
-    <footer class="footer">© SAIREN COLOR ARCHIVE</footer>
+    <footer class="foot">© SAIREN COLOR ARCHIVE</footer>
   </main>
 
-  <script src="/script.js"></script>
+  <script src="/assets/js/archive.js" defer></script>
 </body>
 </html>
