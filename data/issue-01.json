@@ -1,1 +1,153 @@
+{
+  "issueId": "issue-01",
+  "year": "2026",
+  "issueNo": "01",
+  "title": "COLOR AS TIME",
+  "looks": [
+    {
+      "no": "01",
+      "label": "Zip Hoodie / hs",
+      "webp": "assets/img/looks/001_hs_zh_unisex.webp",
+      "jpg": "assets/img/looks/001_hs_zh_unisex.jpg",
+      "alt": "Zip Hoodie (Unisex) - high shot"
+    },
+    {
+      "no": "02",
+      "label": "Zip Hoodie / ms",
+      "webp": "assets/img/looks/002_ms_zh_unisex.webp",
+      "jpg": "assets/img/looks/002_ms_zh_unisex.jpg",
+      "alt": "Zip Hoodie (Unisex) - mid shot"
+    },
+    {
+      "no": "03",
+      "label": "Zip Hoodie / ls",
+      "webp": "assets/img/looks/003_ls_zh_unisex.webp",
+      "jpg": "assets/img/looks/003_ls_zh_unisex.jpg",
+      "alt": "Zip Hoodie (Unisex) - long shot"
+    },
 
+    {
+      "no": "04",
+      "label": "Unisex Hoodie / ms",
+      "webp": "assets/img/looks/004_ms_uh_unisex.webp",
+      "jpg": "assets/img/looks/004_ms_uh_unisex.jpg",
+      "alt": "Unisex Hoodie - mid shot"
+    },
+    {
+      "no": "05",
+      "label": "Unisex Hoodie / hs",
+      "webp": "assets/img/looks/005_hs_uh_unisex.webp",
+      "jpg": "assets/img/looks/005_hs_uh_unisex.jpg",
+      "alt": "Unisex Hoodie - high shot"
+    },
+    {
+      "no": "06",
+      "label": "Unisex Hoodie / ls",
+      "webp": "assets/img/looks/006_ls_uh_unisex.webp",
+      "jpg": "assets/img/looks/006_ls_uh_unisex.jpg",
+      "alt": "Unisex Hoodie - long shot"
+    },
+
+    {
+      "no": "07",
+      "label": "Men’s Crew Neck T-Shirt / hs",
+      "webp": "assets/img/looks/007_hs_mt_men.webp",
+      "jpg": "assets/img/looks/007_hs_mt_men.jpg",
+      "alt": "Men’s Crew Neck T-Shirt - high shot"
+    },
+    {
+      "no": "08",
+      "label": "Men’s Crew Neck T-Shirt / ms",
+      "webp": "assets/img/looks/008_ms_mt_men.webp",
+      "jpg": "assets/img/looks/008_ms_mt_men.jpg",
+      "alt": "Men’s Crew Neck T-Shirt - mid shot"
+    },
+    {
+      "no": "09",
+      "label": "Men’s Crew Neck T-Shirt / ls",
+      "webp": "assets/img/looks/009_ls_mt_men.webp",
+      "jpg": "assets/img/looks/009_ls_mt_men.jpg",
+      "alt": "Men’s Crew Neck T-Shirt - long shot"
+    },
+    {
+      "no": "10",
+      "label": "Men’s Crew Neck T-Shirt / hs",
+      "webp": "assets/img/looks/010_hs_mt_men.webp",
+      "jpg": "assets/img/looks/010_hs_mt_men.jpg",
+      "alt": "Men’s Crew Neck T-Shirt - high shot"
+    },
+
+    {
+      "no": "11",
+      "label": "Women’s Crew Neck T-Shirt / ms",
+      "webp": "assets/img/looks/011_ms_wt_women.webp",
+      "jpg": "assets/img/looks/011_ms_wt_women.jpg",
+      "alt": "Women’s Crew Neck T-Shirt - mid shot"
+    },
+    {
+      "no": "12",
+      "label": "Women’s Crew Neck T-Shirt / hs",
+      "webp": "assets/img/looks/012_hs_wt_women.webp",
+      "jpg": "assets/img/looks/012_hs_wt_women.jpg",
+      "alt": "Women’s Crew Neck T-Shirt - high shot"
+    },
+    {
+      "no": "13",
+      "label": "Women’s Crew Neck T-Shirt / ls",
+      "webp": "assets/img/looks/013_ls_wt_women.webp",
+      "jpg": "assets/img/looks/013_ls_wt_women.jpg",
+      "alt": "Women’s Crew Neck T-Shirt - long shot"
+    },
+    {
+      "no": "14",
+      "label": "Women’s Crew Neck T-Shirt / ms",
+      "webp": "assets/img/looks/014_ms_wt_women.webp",
+      "jpg": "assets/img/looks/014_ms_wt_women.jpg",
+      "alt": "Women’s Crew Neck T-Shirt - mid shot"
+    },
+
+    {
+      "no": "15",
+      "label": "Men’s Slip-On / hs",
+      "webp": "assets/img/looks/015_hs_ms_men.webp",
+      "jpg": "assets/img/looks/015_hs_ms_men.jpg",
+      "alt": "Men’s Slip-On Canvas Shoes - high shot"
+    },
+    {
+      "no": "16",
+      "label": "Men’s Slip-On / ms",
+      "webp": "assets/img/looks/016_ms_ms_men.webp",
+      "jpg": "assets/img/looks/016_ms_ms_men.jpg",
+      "alt": "Men’s Slip-On Canvas Shoes - mid shot"
+    },
+    {
+      "no": "17",
+      "label": "Men’s Slip-On / ls",
+      "webp": "assets/img/looks/017_ls_ms_men.webp",
+      "jpg": "assets/img/looks/017_ls_ms_men.jpg",
+      "alt": "Men’s Slip-On Canvas Shoes - long shot"
+    },
+
+    {
+      "no": "18",
+      "label": "Women’s Slip-On / ms",
+      "webp": "assets/img/looks/018_ms_ws_women.webp",
+      "jpg": "assets/img/looks/018_ms_ws_women.jpg",
+      "alt": "Women’s Slip-On Canvas Shoes - mid shot"
+    },
+    {
+      "no": "19",
+      "label": "Women’s Slip-On / hs",
+      "webp": "assets/img/looks/019_hs_ws_women.webp",
+      "jpg": "assets/img/looks/019_hs_ws_women.jpg",
+      "alt": "Women’s Slip-On Canvas Shoes - high shot"
+    },
+    {
+      "no": "20",
+      "label": "Women’s Slip-On / ls",
+      "webp": "assets/img/looks/020_ls_ws_women.webp",
+      "jpg": "assets/img/looks/020_ls_ws_women.jpg",
+      "alt": "Women’s Slip-On Canvas Shoes - long shot"
+    }
+  ]
+}
