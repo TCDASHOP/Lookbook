@@ -2,43 +2,13 @@
   "issues": [
     {
       "id": "issue-01",
-      "issueNo": "ISSUE 01",
-      "title": "COLOR AS TIME",
-      "tagline": "Wearable art, archived as a magazine.",
+      "issueNo": "01",
       "year": "2026",
-      "pagesCount": 20,
-      "url": "/issue-01/",
-      "coverThumb": "/issue-01/assets/img/cover-thumb.jpg",
-      "cover": "/issue-01/assets/img/cover.jpg",
-      "back": "/issue-01/assets/img/back.jpg",
-      "logo": "/issue-01/assets/img/logo.png",
-      "pages": [
-        "/issue-01/assets/pages/001.jpg",
-        "/issue-01/assets/pages/002.jpg",
-        "/issue-01/assets/pages/003.jpg",
-        "/issue-01/assets/pages/004.jpg",
-        "/issue-01/assets/pages/005.jpg",
-        "/issue-01/assets/pages/006.jpg",
-        "/issue-01/assets/pages/007.jpg",
-        "/issue-01/assets/pages/008.jpg",
-        "/issue-01/assets/pages/009.jpg",
-        "/issue-01/assets/pages/010.jpg",
-        "/issue-01/assets/pages/011.jpg",
-        "/issue-01/assets/pages/012.jpg",
-        "/issue-01/assets/pages/013.jpg",
-        "/issue-01/assets/pages/014.jpg",
-        "/issue-01/assets/pages/015.jpg",
-        "/issue-01/assets/pages/016.jpg",
-        "/issue-01/assets/pages/017.jpg",
-        "/issue-01/assets/pages/018.jpg",
-        "/issue-01/assets/pages/019.jpg",
-        "/issue-01/assets/pages/020.jpg"
-      ],
-      "backCredits": {
-        "line1": "© 2026 SAIREN COLOR ARCHIVE",
-        "line2": "https://sairencolorarchive.com",
-        "line3": "SNS : @tcda.shop"
-      }
+      "title": "COLOR AS TIME",
+      "subtitle": "Wearable art, archived as a magazine.",
+      "href": "./issue-01/",
+      "coverThumb": "./issue-01/assets/cover.webp",
+      "pageCount": 22
     }
   ]
 }
