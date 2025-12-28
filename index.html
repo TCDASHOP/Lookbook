@@ -2,48 +2,66 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LOOKBOOK ARCHIVE | SAIREN COLOR ARCHIVE</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+
+  <title>SAIREN COLOR ARCHIVE — Lookbook</title>
   <meta name="description" content="Wearable art, archived as a magazine." />
 
-  <!-- SEO / OGP -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://look.sairencolorarchive.com/" />
-  <meta property="og:title" content="LOOKBOOK ARCHIVE | SAIREN COLOR ARCHIVE" />
+
+  <!-- OG / Twitter -->
+  <meta property="og:title" content="SAIREN COLOR ARCHIVE — Lookbook" />
   <meta property="og:description" content="Wearable art, archived as a magazine." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://look.sairencolorarchive.com/" />
   <meta property="og:image" content="https://look.sairencolorarchive.com/assets/og/lookbook-og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- CSS（あなたの既存 archive.css を使う想定） -->
   <link rel="stylesheet" href="/assets/css/archive.css?v=20251228" />
-</head>
-<body>
-  <header class="top">
-    <a class="brand" href="https://sairencolorarchive.com/">SAIREN COLOR ARCHIVE</a>
-    <div class="sub">Lookbook Archive</div>
-  </header>
 
-  <main class="wrap">
-    <h1 class="title">COLOR AS TIME</h1>
-    <p class="lead">Wearable art, archived as a magazine.</p>
+  <!-- 検索向け -->
+  <meta name="robots" content="index,follow" />
 
-    <section id="issues" class="grid" aria-label="Issues">
-      <div class="loading">Loading…</div>
-    </section>
-
-    <footer class="foot">© SAIREN COLOR ARCHIVE</footer>
-  </main>
-
-  <script src="/assets/js/archive.js?v=20251228" defer></script>
-
+  <!-- 構造化データ -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"Collection",
-    "name":"SAIREN COLOR ARCHIVE Lookbook",
-    "url":"https://look.sairencolorarchive.com/",
-    "publisher":{"@type":"Organization","name":"SAIREN COLOR ARCHIVE"}
+    "@type":"WebSite",
+    "name":"SAIREN COLOR ARCHIVE — Lookbook",
+    "url":"https://look.sairencolorarchive.com/"
   }
   </script>
+
+  <!-- JS側のキャッシュバスター（必要なら数字だけ上げる） -->
+  <script>window.__BUILD__="20251228";</script>
+</head>
+
+<body>
+  <header class="top">
+    <div class="top__brand">
+      <div class="top__name">SAIREN COLOR ARCHIVE</div>
+      <div class="top__sub">Lookbook Archive</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1 class="hero__title" id="heroTitle">COLOR AS TIME</h1>
+      <p class="hero__lead" id="heroLead">Wearable art, archived as a magazine.</p>
+    </section>
+
+    <!-- Issue Cards mount -->
+    <section class="grid" id="issues" aria-label="Issues">
+      <div class="loading">Loading…</div>
+    </section>
+
+    <footer class="foot">
+      <div class="foot__copy">© SAIREN COLOR ARCHIVE</div>
+    </footer>
+  </main>
+
+  <script src="/assets/js/archive.js?v=20251228" defer></script>
 </body>
 </html>
