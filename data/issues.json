@@ -1,10 +1,15 @@
 {
+  "heroTitle": "COLOR AS TIME",
+  "heroLead": "Wearable art, archived as a magazine.",
+  "fallbackCover": "/assets/og/lookbook-og.jpg",
   "issues": [
     {
       "id": "issue-01",
+      "issueNo": 1,
       "title": "COLOR AS TIME",
+      "subtitle": "Open",
       "url": "/issue-01/",
-      "og": "/assets/og/lookbook-og.jpg"
+      "cover": "/pages/issue-01/001.webp"
     }
   ]
 }
