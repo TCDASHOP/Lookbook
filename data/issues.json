@@ -2,13 +2,14 @@
   "issues": [
     {
       "id": "issue-01",
-      "issueNo": "01",
-      "year": "2026",
+      "label": "ISSUE 01",
       "title": "COLOR AS TIME",
-      "subtitle": "Wearable art, archived as a magazine.",
-      "href": "./issue-01/",
-      "coverThumb": "./issue-01/assets/cover.webp",
-      "pageCount": 22
+      "tagline": "Wearable art, archived as a magazine.",
+      "year": 2026,
+      "pages": 22,
+      "url": "/issue-01/",
+      "thumb": "/issue-01/assets/cover-thumb.webp",
+      "cover": "/issue-01/assets/cover.webp"
     }
   ]
 }
