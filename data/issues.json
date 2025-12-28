@@ -1,20 +1,20 @@
 {
   "site": {
     "name": "SAIREN COLOR ARCHIVE",
-    "section": "Lookbook Archive",
-    "url": "https://look.sairencolorarchive.com/"
+    "title": "COLOR AS TIME",
+    "tagline": "Wearable art, archived as a magazine.",
+    "canonical": "https://look.sairencolorarchive.com/"
   },
   "issues": [
     {
       "id": "issue-01",
-      "issueNo": "01",
+      "label": "ISSUE 01",
       "title": "COLOR AS TIME",
       "subtitle": "Wearable art, archived as a magazine.",
-      "date": "2026-11-01",
-      "href": "./issue-01/",
-      "cover": "./issue-01/pages/001.webp",
-      "ogImage": "./issue-01/pages/001.webp",
-      "status": "published"
+      "openLabel": "Open",
+      "url": "/issue-01/",
+      "coverThumb": "/issue-01/assets/img/cover-thumb.webp",
+      "coverAlt": "ISSUE 01 cover"
     }
   ]
 }
