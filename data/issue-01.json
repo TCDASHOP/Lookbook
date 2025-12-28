@@ -1,0 +1,18 @@
+{
+  "id": "issue-01",
+  "title": "COLOR AS TIME",
+  "pages": [
+    {
+      "src": "/pages/issue-01/001.webp",
+      "alt": "Cover"
+    },
+    {
+      "src": "/pages/issue-01/002.webp",
+      "alt": "Page 2"
+    },
+    {
+      "src": "/pages/issue-01/003.webp",
+      "alt": "Page 3"
+    }
+  ]
+}
