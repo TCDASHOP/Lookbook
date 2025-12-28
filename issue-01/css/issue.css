@@ -59,24 +59,25 @@ a{color:inherit;text-decoration:none}
 /* ===== Pages（1ページ=1画面の根幹） ===== */
 .pages{
   padding-top: var(--barH);
-  padding-bottom: calc(var(--hudH) + env(safe-area-inset-bottom));
+  padding-bottom: 0;                 /* ← 下の余白を消してチラ見え防止 */
   scroll-snap-type: y mandatory;
   scroll-padding-top: var(--barH);
 }
 
 .page{
-  height: calc(100svh - var(--barH) - var(--hudH));
+  height: calc(100dvh - var(--barH)); /* ← iPadはdvhが安定 */
+  padding: 0;                         /* ← 余白ゼロで“1ページ=1画面” */
   display:flex;
   align-items:center;
   justify-content:center;
   scroll-snap-align: start;
-  padding: 10px 0; /* うっすら余白だけ */
+  scroll-snap-stop: always;           /* ← ページでピタッと止まる */
 }
 
 /* ===== Frame ===== */
 .frame{
   width: min(1360px, 96vw);
-  height: 100%;
+  height: calc(100% - 16px);          /* ← 上下ほんの少しだけ余白 */
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(255,255,255,.02);
