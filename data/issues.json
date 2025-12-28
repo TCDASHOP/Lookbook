@@ -1,0 +1,28 @@
+{
+  "issues": [
+    {
+      "id": "issue-01",
+      "issueNo": "01",
+      "year": "2026",
+      "title": {
+        "ja": "COLOR AS TIME",
+        "en": "COLOR AS TIME",
+        "es": "COLOR AS TIME",
+        "fr": "COLOR AS TIME",
+        "ko": "COLOR AS TIME",
+        "zh-hans": "COLOR AS TIME"
+      },
+      "subtitle": {
+        "ja": "表紙→001〜020→裏表紙を“めくる”",
+        "en": "Flip through cover → 001–020 → back cover",
+        "es": "Pasa páginas: portada → 001–020 → contraportada",
+        "fr": "Feuilletez: couverture → 001–020 → quatrième",
+        "ko": "표지→001–020→뒷표지",
+        "zh-hans": "翻页：封面→001–020→封底"
+      },
+      "href": "./issues/issue-01/",
+      "coverThumb": "./assets/images/covers/issue-01-cover.webp",
+      "pageCount": 22
+    }
+  ]
+}
