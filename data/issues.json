@@ -1,15 +1,19 @@
+// data/issues.json
 {
+  "series": {
+    "title": "COLOR AS TIME",
+    "lead": "Wearable art, archived as a magazine."
+  },
   "issues": [
     {
-      "id": "issue-01",
-      "issueNo": "01",
-      "issueLabel": "ISSUE 01",
+      "issueNumber": 1,
       "title": "COLOR AS TIME",
       "description": "Wearable art, archived as a magazine.",
-      "date": "2025-12-28",
+      "date": "2026",
+      "pageCount": 20,
       "href": "/issue-01/",
-      "coverThumb": "/pages/issue-01/001.webp",
-      "pageCount": 20
+      "coverThumb": "/assets/img/covers/issue-01.jpg",
+      "ogImage": "/assets/img/ui/og.jpg"
     }
   ]
 }
