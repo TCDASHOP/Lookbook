@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>COLOR AS TIME — Issue 01 | SAIREN COLOR ARCHIVE</title>
+  <meta name="description" content="Wearable art, archived as a magazine." />
+
+  <!-- SEO / OGP -->
+  <link rel="canonical" href="https://look.sairencolorarchive.com/issue-01/" />
+  <meta property="og:title" content="COLOR AS TIME — Issue 01" />
+  <meta property="og:description" content="Wearable art, archived as a magazine." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://look.sairencolorarchive.com/issue-01/" />
+  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/og/lookbook-og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="./css/issue.css?v=20251228" />
+</head>
+<body>
+  <header class="bar">
+    <a class="bar__brand" href="https://sairencolorarchive.com/">SAIREN COLOR ARCHIVE</a>
+    <a class="bar__archive" href="/">Archive</a>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <button class="hud__btn" id="prevBtn" title="Prev">‹</button>
+    <div class="hud__count"><span id="cur">--</span> / <span id="total">--</span></div>
+    <button class="hud__btn" id="nextBtn" title="Next">›</button>
+  </div>
+
+  <main id="pages" class="pages" aria-label="Issue pages">
+    <div class="loading">Loading…</div>
+  </main>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CreativeWork",
+    "name":"COLOR AS TIME — Issue 01",
+    "url":"https://look.sairencolorarchive.com/issue-01/",
+    "isPartOf":{"@type":"Collection","name":"SAIREN COLOR ARCHIVE Lookbook"},
+    "creator":{"@type":"Person","name":"Sairen Takashima"}
+  }
+  </script>
+
+  <script>window.__ISSUE_DATA__="/data/issue-01.json";</script>
+  <script src="./js/issue.js?v=20251228" defer></script>
+</body>
+</html>
