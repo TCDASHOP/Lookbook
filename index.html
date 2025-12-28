@@ -1,102 +1,196 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 
   <title>SAIREN COLOR ARCHIVE | Lookbook Archive</title>
   <meta name="description" content="Wearable art, archived as a magazine. SAIREN COLOR ARCHIVE Lookbook Archive." />
-
-  <!-- Canonical / OG / Twitter -->
   <link rel="canonical" href="https://look.sairencolorarchive.com/" />
+
+  <!-- OG -->
   <meta property="og:title" content="SAIREN COLOR ARCHIVE | Lookbook Archive" />
   <meta property="og:description" content="Wearable art, archived as a magazine." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://look.sairencolorarchive.com/" />
-  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/og/lookbook-og.jpg" />
+  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/img/ui/og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="stylesheet" href="/assets/css/archive.css" />
+  <!-- Fonts (安定重視：読み込めなくても崩れない) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- 追加の最小スタイル（既存CSSに干渉しにくい） -->
   <style>
-    .issueCard { display:flex; gap:16px; align-items:center; width:100%; }
-    .issueThumb {
-      width:96px; height:128px; flex:0 0 auto;
-      border-radius:14px; overflow:hidden;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      display:flex; align-items:center; justify-content:center;
+    :root{
+      --bg:#0b0c10;
+      --fg:rgba(255,255,255,.88);
+      --muted:rgba(255,255,255,.62);
+      --line:rgba(255,255,255,.10);
+      --glass:rgba(255,255,255,.05);
+      --glass2:rgba(0,0,0,.22);
+      --radius:18px;
+      --shadow:0 24px 90px rgba(0,0,0,.45);
+      --max:1160px;
     }
-    .issueThumb img { width:100%; height:100%; object-fit:cover; display:block; }
-    .thumbFallback {
-      font-size:12px; opacity:.7; letter-spacing:.18em; text-transform:uppercase;
-      padding:10px; text-align:center;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background:
+        radial-gradient(1000px 800px at 35% 10%, rgba(255,255,255,.06), transparent 55%),
+        radial-gradient(900px 700px at 75% 30%, rgba(255,255,255,.04), transparent 60%),
+        var(--bg);
+      color:var(--fg);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      letter-spacing:.02em;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
-    .issueMeta { min-width:0; }
-    .issueTopline { font-size:12px; opacity:.65; letter-spacing:.18em; text-transform:uppercase; }
-    .issueTitle { font-size:18px; font-weight:700; margin-top:6px; }
-    .issueDesc { font-size:13px; opacity:.75; margin-top:6px; line-height:1.4; }
-    .issueAction { margin-top:10px; display:inline-flex; align-items:center; gap:8px; }
-    .issueAction .pill {
-      display:inline-block; padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.25);
-      font-size:12px; opacity:.9;
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:40px 20px 64px}
+    .brand{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+    .sub{margin-top:6px; font-size:12px; color:rgba(255,255,255,.45)}
+    h1{
+      margin-top:28px;
+      font-family:"Bodoni Moda", serif;
+      font-size:56px;
+      line-height:1.02;
+      letter-spacing:.02em;
+    }
+    .lead{margin-top:10px; color:var(--muted); font-size:14px}
+
+    .list{margin-top:26px; display:grid; gap:14px}
+
+    .card{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:18px;
+      padding:16px 18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+
+    .thumb{
+      width:120px;
+      aspect-ratio:3/4;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+
+    .meta{display:flex; flex-direction:column; justify-content:center; min-width:0}
+    .issueLine{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.55);
+    }
+    .title{
+      margin-top:6px;
+      font-weight:600;
+      font-size:18px;
+      letter-spacing:.04em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .desc{
+      margin-top:6px;
+      color:rgba(255,255,255,.62);
+      font-size:13px;
+      line-height:1.4;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+    .actions{margin-top:10px; display:flex; gap:10px; align-items:center}
+    .btn{
+      appearance:none;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.15);
+      color:rgba(255,255,255,.85);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-decoration:none;
+      width:max-content;
+      transition:.15s ease;
+    }
+    .btn:hover{transform:translateY(-1px); border-color:rgba(255,255,255,.28)}
+    .hint{
+      font-size:12px;
+      color:rgba(255,255,255,.40);
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+    footer{
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(255,255,255,.42);
+      font-size:12px;
+      letter-spacing:.10em;
+    }
+
+    .err{
+      margin-top:18px;
+      padding:14px 16px;
+      border:1px solid rgba(255,80,80,.28);
+      background:rgba(255,80,80,.08);
+      border-radius:14px;
+      color:rgba(255,255,255,.85);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    @media (max-width:520px){
+      h1{font-size:44px}
+      .card{grid-template-columns:96px 1fr}
+      .thumb{width:96px}
     }
   </style>
+</head>
 
-  <!-- 構造化データ（SEO） -->
+<body>
+  <main class="wrap">
+    <div class="brand">SAIREN COLOR ARCHIVE</div>
+    <div class="sub">Lookbook Archive</div>
+
+    <h1 id="seriesTitle">COLOR AS TIME</h1>
+    <div class="lead" id="seriesLead">Wearable art, archived as a magazine.</div>
+
+    <section class="list" id="issuesList" aria-label="Issues"></section>
+
+    <div id="errorBox" class="err" style="display:none;"></div>
+
+    <footer>© <span id="year"></span> SAIREN COLOR ARCHIVE</footer>
+  </main>
+
+  <script src="assets/js/archive.js" defer></script>
+
+  <!-- 構造化データ（最低限） -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"CollectionPage",
     "name":"SAIREN COLOR ARCHIVE | Lookbook Archive",
-    "url":"https://look.sairencolorarchive.com/",
-    "isPartOf":{"@type":"WebSite","name":"SAIREN COLOR ARCHIVE","url":"https://sairencolorarchive.com/"},
-    "description":"Wearable art, archived as a magazine."
+    "url":"https://look.sairencolorarchive.com/"
   }
   </script>
-</head>
-
-<body>
-  <header class="top">
-    <div class="brand">
-      <div class="brand__name">SAIREN COLOR ARCHIVE</div>
-      <div class="brand__sub">Lookbook Archive</div>
-    </div>
-
-    <h1 class="heroTitle">COLOR AS TIME</h1>
-    <p class="heroLead">Wearable art, archived as a magazine.</p>
-  </header>
-
-  <main class="wrap">
-    <section id="issues" aria-label="Issues">
-      <!-- JSでここにカードが生成されます -->
-    </section>
-
-    <!-- JS無効時でも最低限インデックスされるように -->
-    <noscript>
-      <a class="card" href="/issue-01/">
-        <div class="issueCard">
-          <div class="issueThumb">
-            <img src="/pages/issue-01/001.webp" alt="ISSUE 01 cover" />
-          </div>
-          <div class="issueMeta">
-            <div class="issueTopline">ISSUE 01</div>
-            <div class="issueTitle">COLOR AS TIME</div>
-            <div class="issueDesc">Wearable art, archived as a magazine.</div>
-            <div class="issueAction"><span class="pill">Open</span></div>
-          </div>
-        </div>
-      </a>
-    </noscript>
-  </main>
-
-  <footer class="foot">
-    <div>© SAIREN COLOR ARCHIVE</div>
-  </footer>
-
-  <script src="/assets/js/archive.js" defer></script>
 </body>
 </html>
