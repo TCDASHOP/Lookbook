@@ -2,248 +2,256 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>ISSUE 01 | COLOR AS TIME</title>
-  <meta name="description" content="Page-flip lookbook experience." />
+  <meta name="color-scheme" content="dark">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#0b0c10;
-      --fg:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.60);
+      --fg:rgba(255,255,255,.88);
+      --muted:rgba(255,255,255,.58);
       --line:rgba(255,255,255,.10);
-      --glass:rgba(255,255,255,.05);
-      --r:22px;
-      --shadow: 0 28px 90px rgba(0,0,0,.55);
-      --turn: 900ms;
+      --card:rgba(255,255,255,.05);
+      --shadow: 0 30px 120px rgba(0,0,0,.55);
+      --radius:18px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       background:
-        radial-gradient(1200px 520px at 20% 18%, rgba(255,255,255,.10), transparent 60%),
-        radial-gradient(900px 420px at 72% 26%, rgba(255,255,255,.08), transparent 62%),
+        radial-gradient(1200px 700px at 25% 10%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(900px 600px at 75% 35%, rgba(255,255,255,.05), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.03), transparent 35%),
         var(--bg);
       color:var(--fg);
-      font-family: Inter, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", Segoe UI, Roboto, sans-serif;
-      overflow:hidden; /* “本”以外スクロールしない */
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      overflow:hidden;
     }
 
-    /* HUD */
     .hud{
       position:fixed;
-      left: clamp(14px, 2.2vw, 24px);
-      top: calc(env(safe-area-inset-top) + 14px);
-      z-index: 50;
-      display:flex;
-      flex-direction:column;
-      gap: 6px;
+      top:0; left:0; right:0;
+      padding:18px 18px 10px;
       pointer-events:none;
+      z-index:10;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .hud .left{
+      pointer-events:none;
+      display:flex; flex-direction:column; gap:6px;
+      min-width:0;
     }
     .brand{
       font-size:12px;
-      letter-spacing:.22em;
+      letter-spacing:.18em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.72);
-      pointer-events:none;
+      color:rgba(255,255,255,.75);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-    .sub{
+    .issue{
       font-size:12px;
-      color:rgba(255,255,255,.50);
-      pointer-events:none;
-    }
-
-    .count{
-      position:fixed;
-      right: clamp(14px, 2.2vw, 24px);
-      top: calc(env(safe-area-inset-top) + 14px);
-      z-index: 60;
-      padding: 10px 12px;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius: 999px;
-      background: rgba(0,0,0,.22);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      font-size:12px;
-      letter-spacing:.10em;
-      color:rgba(255,255,255,.86);
-      pointer-events:none;
-    }
-
-    .backBtn{
-      position:fixed;
-      left: clamp(14px, 2.2vw, 24px);
-      bottom: calc(env(safe-area-inset-bottom) + 14px);
-      z-index: 70;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      color:rgba(255,255,255,.92);
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-size:12px;
+      color:rgba(255,255,255,.48);
       letter-spacing:.08em;
-      text-decoration:none;
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .count{
+      pointer-events:none;
+      font-size:12px;
+      letter-spacing:.14em;
+      color:rgba(255,255,255,.70);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      padding:10px 12px;
+      border-radius:999px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      height:fit-content;
     }
 
-    /* Book stage */
     .stage{
-      height:100%;
-      display:grid;
-      place-items:center;
-      padding: calc(env(safe-area-inset-top) + 56px) 16px calc(env(safe-area-inset-bottom) + 56px);
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:72px 18px 72px;
     }
 
-    .bookShell{
-      width: min(980px, 92vw);
-      height: min(720px, 78vh);
-      border-radius: var(--r);
+    .frame{
+      width:min(1100px, 96vw);
+      height:min(76vh, 760px);
+      border-radius:var(--radius);
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      display:grid;
-      place-items:center;
-      overflow:hidden;
       position:relative;
-    }
-
-    /* 1ページ表示の“めくり” */
-    .book{
-      width: min(520px, 74vw);
-      height: min(680px, 70vh);
-      position:relative;
-      perspective: 1800px;
-      transform: translateZ(0);
-    }
-
-    .page{
-      position:absolute;
-      inset:0;
-      border-radius: 18px;
       overflow:hidden;
-      background: rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.10);
-      transform-origin: left center;
-      transform: rotateY(0deg);
-      transition: transform var(--turn) cubic-bezier(.2,.8,.2,1);
-      will-change: transform;
-      box-shadow: 0 22px 70px rgba(0,0,0,.45);
     }
 
-    .page::before{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(0,0,0,.22), transparent 28%, transparent 70%, rgba(0,0,0,.22));
-      pointer-events:none;
-      opacity:.65;
-    }
-
-    .page img{
-      width:100%;
-      height:100%;
-      object-fit: contain;
-      display:block;
-      background: #fff; /* 写真余白がある時に綺麗 */
-    }
-
-    /* “めくれた”ページ */
-    .page.turned{
-      transform: rotateY(-180deg);
-    }
-
-    /* 裏表紙テキスト（必要なら上から載せる） */
-    .backOverlay{
+    /* Page layers */
+    .page-layer{
       position:absolute;
-      inset:0;
-      display:flex;
-      align-items:flex-end;
-      justify-content:center;
-      padding: 18px;
-      pointer-events:none;
-    }
-    .backBlock{
-      width:100%;
+      inset:18px;
+      border-radius:14px;
+      overflow:hidden;
+      background:rgba(0,0,0,.18);
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      color: rgba(255,255,255,.90);
-      font-size: 12px;
-      letter-spacing:.06em;
-      text-shadow: 0 10px 30px rgba(0,0,0,.65);
+      justify-content:center;
     }
-    .backLeft{
-      display:flex; flex-direction:column; gap:4px;
-      color: rgba(255,255,255,.92);
+    .page-layer img{
+      width:100%;
+      height:100%;
+      object-fit:contain; /* 雑誌ページは基本「全部見える」 */
+      display:block;
+      background:rgba(0,0,0,.20);
     }
-    .backLeft a{ color: rgba(255,255,255,.92); text-decoration:none; }
-    .logo{
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.18);
-      overflow:hidden;
-      display:grid;
-      place-items:center;
-    }
-    .logo img{ width:100%; height:100%; object-fit:cover; display:block; background: transparent; }
 
-    /* 画面左右タップ領域（矢印なしで“めくる”） */
-    .tapZone{
-      position:absolute; inset:0;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      z-index: 40;
-    }
-    .tapZone > div{ cursor:pointer; }
-
-    /* エラー */
-    .error{
+    /* Page turn effect */
+    .turn-wrap{
       position:absolute;
-      left: 16px; right: 16px;
-      bottom: 16px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border:1px solid rgba(255,120,120,.35);
-      background: rgba(120,0,0,.18);
-      color: rgba(255,220,220,.92);
-      font-size: 13px;
-      box-shadow: 0 14px 50px rgba(0,0,0,.35);
-      z-index: 80;
+      inset:18px;
+      border-radius:14px;
+      overflow:hidden;
+      perspective: 1400px;
+      pointer-events:none;
+    }
+    .turn{
+      position:absolute;
+      inset:0;
+      transform-style:preserve-3d;
+      transform-origin:left center;
+      transition: transform 520ms cubic-bezier(.2,.7,.2,1);
+    }
+    .turn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.0), rgba(0,0,0,.38));
+      opacity:0;
+      transition: opacity 520ms cubic-bezier(.2,.7,.2,1);
+      pointer-events:none;
+    }
+    .turn img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+      background:rgba(0,0,0,.20);
+    }
+    .turn .back{
+      transform: rotateY(180deg);
+      filter: brightness(.92);
+    }
+    .is-turning .turn{
+      transform: rotateY(-180deg);
+    }
+    .is-turning .turn::before{
+      opacity:1;
+    }
+
+    .controls{
+      position:fixed;
+      left:18px;
+      bottom:18px;
+      display:flex;
+      gap:10px;
+      z-index:10;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:rgba(255,255,255,.86);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:13px;
+      letter-spacing:.02em;
+      cursor:pointer;
+      user-select:none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .btn:active{transform:translateY(1px)}
+    .hint{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:10;
+      font-size:12px;
+      color:rgba(255,255,255,.46);
+      letter-spacing:.06em;
+      text-align:right;
+      max-width:52vw;
+    }
+
+    .missing{
+      position:absolute;
+      inset:auto 18px 18px 18px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,80,80,.35);
+      background:rgba(255,80,80,.10);
+      color:rgba(255,255,255,.86);
+      font-size:12px;
+      letter-spacing:.02em;
+      display:none;
+      z-index:20;
     }
   </style>
 </head>
-
 <body>
   <div class="hud">
-    <div class="brand">SAIREN COLOR ARCHIVE</div>
-    <div class="sub">Issue 01 • COLOR AS TIME</div>
+    <div class="left">
+      <div class="brand">SAIREN COLOR ARCHIVE</div>
+      <div class="issue">Issue 01 • COLOR AS TIME</div>
+    </div>
+    <div class="count" id="count">01 / 22</div>
   </div>
 
-  <div class="count" id="count">01 / 22</div>
-  <a class="backBtn" href="/">Back</a>
-
-  <div class="stage">
-    <div class="bookShell">
-      <div class="book" id="book" aria-label="Flipbook"></div>
-
-      <!-- タップでめくる（左=戻る、右=次へ） -->
-      <div class="tapZone" id="tapZone" aria-hidden="true">
-        <div data-dir="prev"></div>
-        <div data-dir="next"></div>
+  <div class="stage" id="stage">
+    <div class="frame" id="frame" aria-label="Magazine Viewer">
+      <div class="page-layer">
+        <img id="pageImg" alt="page">
       </div>
 
-      <div class="error" id="err" style="display:none;"></div>
+      <!-- turning overlay -->
+      <div class="turn-wrap" aria-hidden="true">
+        <div class="turn" id="turn">
+          <img class="front" id="turnFront" alt="">
+          <img class="back"  id="turnBack"  alt="">
+        </div>
+      </div>
+
+      <div class="missing" id="missing"></div>
     </div>
   </div>
 
-  <script src="/issue-01/assets/js/flipbook.js?v=20251228-1" defer></script>
+  <div class="controls">
+    <button class="btn" id="backBtn">Back</button>
+    <button class="btn" id="prevBtn">Prev</button>
+    <button class="btn" id="nextBtn">Next</button>
+  </div>
+
+  <div class="hint">Tap / Swipe / ← → でページをめくる</div>
+
+  <script defer src="./js/issue.js"></script>
 </body>
 </html>
