@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="color-scheme" content="dark">
+  <title>ISSUE 01｜COLOR AS TIME</title>
+  <meta name="description" content="Issue 01 — flip through cover → 001–020 → back cover." />
+  <link rel="canonical" href="https://look.sairencolorarchive.com/issues/issue-01/" />
+  <meta property="og:title" content="ISSUE 01｜COLOR AS TIME" />
+  <meta property="og:description" content="Flip through cover → 001–020 → back cover." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://look.sairencolorarchive.com/issues/issue-01/" />
+  <meta property="og:image" content="https://look.sairencolorarchive.com/assets/images/og/og.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="../../assets/css/issue.css?v=20251228" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"ISSUE 01｜COLOR AS TIME","url":"https://look.sairencolorarchive.com/issues/issue-01/","isPartOf":{"@type":"CreativeWorkSeries","name":"SAIREN COLOR ARCHIVE｜LOOKBOOK"}}
+  </script>
+</head>
+<body>
+  <header class="hud">
+    <div class="left">
+      <div class="brand">SAIREN COLOR ARCHIVE</div>
+      <div class="issue">Issue 01 • COLOR AS TIME</div>
+    </div>
+    <div class="right">
+      <a class="chip" href="../../?lang=ja" id="backHome">ARCHIVE</a>
+      <div class="chip" id="count">01 / 22</div>
+    </div>
+  </header>
+
+  <main class="stage">
+    <div class="frame" id="frame" aria-label="Flipbook">
+      <img id="pageImg" alt="page" decoding="async">
+      <div class="turn-wrap" aria-hidden="true">
+        <div class="turn" id="turn">
+          <img class="front" id="turnFront" alt="">
+          <img class="back" id="turnBack" alt="">
+        </div>
+      </div>
+      <div class="missing" id="missing"></div>
+    </div>
+  </main>
+
+  <nav class="controls" aria-label="controls">
+    <button class="btn" id="prevBtn">Prev</button>
+    <button class="btn" id="nextBtn">Next</button>
+  </nav>
+
+  <div class="hint">Tap / Swipe / ← →</div>
+  <script defer src="./js/flipbook.js?v=20251228"></script>
+</body>
+</html>
