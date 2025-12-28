@@ -1,132 +1,140 @@
-// assets/js/archive.js
+/* assets/js/archive.js */
 (() => {
-  const $list = document.getElementById("issuesList");
-  const $err = document.getElementById("errorBox");
-  const $year = document.getElementById("year");
-  const $seriesTitle = document.getElementById("seriesTitle");
-  const $seriesLead = document.getElementById("seriesLead");
+  const elList = document.getElementById("issues");
+  const elAlert = document.getElementById("alert");
+  const elY = document.getElementById("y");
+  if (elY) elY.textContent = String(new Date().getFullYear());
 
-  $year.textContent = String(new Date().getFullYear());
-
-  const escapeHtml = (s) =>
-    String(s ?? "").replace(/[&<>"']/g, (m) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[m]));
-
-  const pad2 = (n) => String(n).padStart(2, "0");
-
-  const showError = (msg) => {
-    $err.style.display = "block";
-    $err.innerHTML = escapeHtml(msg);
+  // 1) 何が起きても真っ白にしない（フォールバック）
+  const FALLBACK = {
+    issues: [
+      {
+        id: "issue-01",
+        issueNo: "01",
+        year: "2026",
+        title: "COLOR AS TIME",
+        subtitle: "Wearable art, archived as a magazine.",
+        href: "./issue-01/",
+        // 表紙サムネ（ここが壊れてても落ちない）
+        coverThumb: "./issue-01/assets/cover.webp",
+        // 22=表紙+20ページ+裏表紙（あなたのイメージに合わせた既定値）
+        pageCount: 22
+      }
+    ]
   };
 
-  const coverFallbackSvg = () => {
-    // 画像が無くてもカードが壊れない（白画面化しない）ためのフォールバック
-    return `
-      <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
-        <rect x="10" y="8" width="44" height="48" rx="10" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)"/>
-        <path d="M22 26h20M22 34h16" stroke="rgba(255,255,255,.30)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="24" cy="44" r="2" fill="rgba(255,255,255,.30)"/>
-        <path d="M28 44h14" stroke="rgba(255,255,255,.30)" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    `.trim();
-  };
+  function showAlert(msg) {
+    if (!elAlert) return;
+    elAlert.style.display = "block";
+    elAlert.textContent = msg;
+  }
 
-  const renderCard = (issue) => {
-    const num = issue.issueNumber ?? issue.issue ?? "";
-    const issueLabel = num !== "" ? `ISSUE ${pad2(num)}` : (issue.label ?? "ISSUE");
-    const title = escapeHtml(issue.title ?? "");
-    const desc = escapeHtml(issue.description ?? "");
-    const href = issue.href ?? "#";
-    const pages = issue.pageCount ? `${issue.pageCount} pages` : "";
-    const date = issue.date ? escapeHtml(issue.date) : "";
-    const hint = [date, pages].filter(Boolean).join(" · ");
+  // 2) JSONフェッチ：キャッシュ事故を潰しつつ、壊れてたら即フォールバック
+  async function loadIssues() {
+    const url = new URL("./data/issues.json", location.href);
+    // キャッシュが古いJSONを掴む事故防止
+    url.searchParams.set("v", String(Date.now()));
 
-    const card = document.createElement("article");
-    card.className = "card";
-
-    const thumb = document.createElement("div");
-    thumb.className = "thumb";
-
-    const imgSrc = issue.coverThumb ?? issue.cover ?? "";
-    if (imgSrc) {
-      const img = document.createElement("img");
-      img.alt = `${issueLabel} ${issue.title ?? ""}`.trim();
-      img.loading = "lazy";
-      img.decoding = "async";
-      img.src = imgSrc;
-
-      img.onerror = () => {
-        thumb.innerHTML = coverFallbackSvg();
-      };
-
-      thumb.appendChild(img);
-    } else {
-      thumb.innerHTML = coverFallbackSvg();
-    }
-
-    const meta = document.createElement("div");
-    meta.className = "meta";
-    meta.innerHTML = `
-      <div class="issueLine">${escapeHtml(issueLabel)}</div>
-      <div class="title">${title}</div>
-      <div class="desc">${desc}</div>
-      <div class="actions">
-        <a class="btn" href="${escapeHtml(href)}" aria-label="Open ${title}">Open</a>
-        <div class="hint" title="${escapeHtml(hint)}">${escapeHtml(hint)}</div>
-      </div>
-    `;
-
-    card.appendChild(thumb);
-    card.appendChild(meta);
-    return card;
-  };
-
-  const safeJson = async (res) => {
-    const text = await res.text();
-    try { return JSON.parse(text); } catch {
-      throw new Error("issues.json が JSON として読めません（カンマ/括弧/引用符を確認）");
-    }
-  };
-
-  const init = async () => {
     try {
-      const url = `data/issues.json?ts=${Date.now()}`; // キャッシュで更新が反映されない事故対策
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`issues.json が取得できません（HTTP ${res.status}）`);
+      const res = await fetch(url.toString(), { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
 
-      const data = await safeJson(res);
-
-      // 形式を許容： {issues:[...]} / [...] のどちらでもOK
-      const issues = Array.isArray(data) ? data : (data.issues ?? []);
-      if (!Array.isArray(issues) || issues.length === 0) {
-        throw new Error("issues.json に issues がありません（空です）");
+      // JSONが1文字でも壊れてると落ちるので、ここで握りつぶしてフォールバック
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        showAlert("issues.json が JSON として読めません（カンマ/括弧/引用符/全角混入を確認）→ フォールバック表示中");
+        return FALLBACK;
       }
 
-      // シリーズ表記（任意）
-      const series = data.series ?? null;
-      if (series?.title) $seriesTitle.textContent = String(series.title);
-      if (series?.lead) $seriesLead.textContent = String(series.lead);
+      if (!data || !Array.isArray(data.issues)) {
+        showAlert("issues.json の形式が違います（issues 配列が必要）→ フォールバック表示中");
+        return FALLBACK;
+      }
 
-      // 表示をクリアしてから描画
-      $list.innerHTML = "";
-      issues
-        .slice()
-        .sort((a, b) => (Number(a.issueNumber ?? 0) - Number(b.issueNumber ?? 0)))
-        .forEach((issue) => $list.appendChild(renderCard(issue)));
-
+      return data;
     } catch (e) {
-      console.error(e);
-      showError(
-        (e && e.message) ? e.message :
-        "読み込みに失敗しました。issues.json / パス / 文字ミスを確認してください。"
-      );
+      showAlert("issues.json を読み込めません（パス/大文字小文字/配置場所/ネットワーク）→ フォールバック表示中");
+      return FALLBACK;
     }
-  };
+  }
 
-  document.addEventListener("DOMContentLoaded", init, { once: true });
+  function safeText(v, alt = "") {
+    return (typeof v === "string" && v.trim()) ? v : alt;
+  }
+
+  function makePlaceholderSVG() {
+    // 画像が欠けても“雑誌カード”として成立するプレースホルダ
+    return `data:image/svg+xml;charset=utf-8,` + encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240">
+        <defs>
+          <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="rgba(255,255,255,.10)"/>
+            <stop offset="1" stop-color="rgba(255,255,255,.02)"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="240" height="240" rx="28" fill="url(#g)"/>
+        <rect x="62" y="56" width="116" height="148" rx="14" fill="rgba(0,0,0,.22)" stroke="rgba(255,255,255,.12)"/>
+        <rect x="82" y="84" width="76" height="8" rx="4" fill="rgba(255,255,255,.22)"/>
+        <rect x="82" y="104" width="62" height="8" rx="4" fill="rgba(255,255,255,.16)"/>
+        <rect x="82" y="124" width="68" height="8" rx="4" fill="rgba(255,255,255,.12)"/>
+      </svg>
+    `);
+  }
+
+  function render(data) {
+    elList.innerHTML = "";
+
+    const issues = data.issues.slice().sort((a, b) => {
+      // issueNo を数値比較（"01" "02" など）
+      const na = parseInt(a.issueNo || "0", 10);
+      const nb = parseInt(b.issueNo || "0", 10);
+      return nb - na;
+    });
+
+    const placeholder = makePlaceholderSVG();
+
+    for (const it of issues) {
+      const issueNo = safeText(it.issueNo, "--");
+      const title = safeText(it.title, "UNTITLED");
+      const subtitle = safeText(it.subtitle, "");
+      const year = safeText(it.year, "");
+      const pageCount = Number.isFinite(Number(it.pageCount)) ? Number(it.pageCount) : 0;
+      const href = safeText(it.href, "./");
+      const cover = safeText(it.coverThumb, placeholder);
+
+      const card = document.createElement("article");
+      card.className = "card";
+
+      card.innerHTML = `
+        <div class="row">
+          <div class="thumb">
+            <img src="${cover}" alt="Issue ${issueNo} cover" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="meta">
+            <small>ISSUE ${issueNo}</small>
+            <h2>${title}</h2>
+            <p>${subtitle}</p>
+          </div>
+
+          <div class="right">
+            <div class="pill">${[year, pageCount ? `${pageCount} pages` : ""].filter(Boolean).join(" ・ ")}</div>
+            <a class="btn" href="${href}">Open</a>
+          </div>
+        </div>
+      `;
+
+      // 画像が404でも落とさない
+      const img = card.querySelector("img");
+      img.addEventListener("error", () => { img.src = placeholder; }, { once: true });
+
+      elList.appendChild(card);
+    }
+  }
+
+  // boot
+  loadIssues().then(render);
 })();
