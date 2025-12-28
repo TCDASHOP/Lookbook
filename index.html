@@ -2,176 +2,200 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>SAIREN COLOR ARCHIVE | Lookbook</title>
-  <meta name="description" content="Lookbook as a magazine. Tap to open." />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <title>SAIREN COLOR ARCHIVE｜Lookbook Archive</title>
+  <meta name="description" content="Wearable art, archived as a magazine." />
+
+  <!-- cache kill (JSONが古いのを読んで事故るのを防ぐ) -->
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#0b0c10;
-      --fg:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.62);
+      --txt:rgba(255,255,255,.86);
+      --muted:rgba(255,255,255,.55);
       --line:rgba(255,255,255,.10);
       --glass:rgba(255,255,255,.06);
-      --r:22px;
-      --shadow: 0 28px 90px rgba(0,0,0,.55);
+      --glass2:rgba(255,255,255,.03);
+      --radius:22px;
     }
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
-      margin:0;
-      background:
-        radial-gradient(1200px 520px at 20% 18%, rgba(255,255,255,.10), transparent 60%),
-        radial-gradient(900px 420px at 72% 26%, rgba(255,255,255,.08), transparent 62%),
-        var(--bg);
-      color:var(--fg);
-      font-family: Inter, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", Segoe UI, Roboto, sans-serif;
-      overflow:hidden;
+      background: radial-gradient(1200px 900px at 20% 15%, rgba(255,255,255,.06), transparent 55%),
+                  radial-gradient(900px 700px at 80% 35%, rgba(255,255,255,.04), transparent 60%),
+                  var(--bg);
+      color:var(--txt);
+      font-family:Inter, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
     }
     .wrap{
-      height:100%;
-      padding: calc(env(safe-area-inset-top) + 28px) clamp(18px, 3vw, 34px) calc(env(safe-area-inset-bottom) + 24px);
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-    }
-    .stage{
-      width:min(1100px, 100%);
+      width:min(1200px, 92vw);
+      margin:0 auto;
+      padding:28px 0 64px;
     }
     .brand{
-      font-size:12px;
       letter-spacing:.22em;
+      font-size:12px;
+      color:var(--muted);
       text-transform:uppercase;
-      color:rgba(255,255,255,.72);
       margin-bottom:6px;
     }
     .sub{
       font-size:12px;
-      color:rgba(255,255,255,.50);
-      margin-bottom: 26px;
-    }
-    h1{
-      margin:0 0 10px 0;
-      font-family:"Playfair Display", serif;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size: clamp(38px, 5.8vw, 72px);
-      line-height:1.02;
-    }
-    .tagline{
-      margin:0 0 20px 0;
       color:var(--muted);
+      margin-bottom:26px;
+    }
+    .title{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(38px, 5vw, 64px);
+      letter-spacing:.06em;
+      margin-bottom:6px;
+    }
+    .lead{
+      color:var(--muted);
+      margin-bottom:26px;
       font-size:14px;
     }
 
-    /* “号数 + 表紙” の一枚だけ＝棚の1冊 */
-    .shelf{
-      margin-top: 10px;
-      width:100%;
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .card{
+      position:relative;
+      border-radius:var(--radius);
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, var(--glass), var(--glass2));
+      box-shadow: 0 20px 80px rgba(0,0,0,.45);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      padding: 18px;
-      display:flex;
-      gap:18px;
-      align-items:center;
-      cursor:pointer;
-      user-select:none;
-      transition: transform .18s ease, border-color .18s ease;
-    }
-    .shelf:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.18); }
-    .cover{
-      width: 124px;
-      aspect-ratio: 3 / 4;
-      border-radius: 16px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      flex:0 0 auto;
+      padding:18px;
+    }
+    .row{
       display:grid;
-      place-items:center;
-      position:relative;
+      grid-template-columns: 110px 1fr auto;
+      gap:16px;
+      align-items:center;
     }
-    .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .meta{min-width:0; flex:1}
-    .issue{
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.62);
-      margin-bottom: 6px;
-    }
-    .title{
-      margin:0 0 6px 0;
-      font-size:18px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      font-weight:600;
-      white-space:nowrap;
+
+    .thumb{
+      width:110px;height:110px;
+      border-radius:18px;
+      border:1px solid var(--line);
       overflow:hidden;
-      text-overflow:ellipsis;
+      background: rgba(0,0,0,.25);
+      display:flex;align-items:center;justify-content:center;
     }
-    .small{
+    .thumb img{
+      width:100%;height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .meta small{
+      display:block;
+      letter-spacing:.22em;
+      color:var(--muted);
+      font-size:11px;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+    .meta h2{
+      font-family:"Playfair Display", serif;
+      font-size:22px;
+      letter-spacing:.04em;
+      margin-bottom:6px;
+    }
+    .meta p{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+      max-width:64ch;
+    }
+    .right{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:10px;
+      min-width:140px;
+    }
+    .pill{
+      color:var(--muted);
       font-size:12px;
-      color:rgba(255,255,255,.50);
-    }
-    .cta{
-      display:flex; align-items:center; justify-content:flex-end;
+      letter-spacing:.04em;
     }
     .btn{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.20);
-      color:rgba(255,255,255,.92);
-      border-radius: 999px;
-      padding: 9px 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:34px;
+      padding:0 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.25);
+      color:var(--txt);
+      text-decoration:none;
+      font-size:12px;
+      letter-spacing:.06em;
+      transition: transform .15s ease, border-color .15s ease;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:active{transform:scale(.98)}
+    .btn:hover{border-color:rgba(255,255,255,.34)}
+    .footer{
+      margin-top:22px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(255,255,255,.45);
       font-size:12px;
       letter-spacing:.08em;
     }
-    .footer{
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top:1px solid rgba(255,255,255,.10);
-      color:rgba(255,255,255,.42);
-      font-size:12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
+
+    .alert{
+      margin:16px 0 0;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,80,80,.25);
+      background: rgba(120,0,0,.18);
+      color: rgba(255,255,255,.82);
+      font-size:13px;
+      display:none;
+    }
+
+    @media (max-width:720px){
+      .row{grid-template-columns: 92px 1fr}
+      .right{grid-column: 1 / -1; align-items:flex-start; flex-direction:row; gap:12px; margin-top:8px}
+      .thumb{width:92px;height:92px;border-radius:16px}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="stage">
-      <div class="brand">SAIREN COLOR ARCHIVE</div>
-      <div class="sub">Lookbook Archive</div>
+  <main class="wrap">
+    <div class="brand">SAIREN COLOR ARCHIVE</div>
+    <div class="sub">Lookbook Archive</div>
 
-      <h1>COLOR AS TIME</h1>
-      <p class="tagline">Wearable art, archived as a magazine.</p>
+    <div class="title">COLOR AS TIME</div>
+    <div class="lead">Wearable art, archived as a magazine.</div>
 
-      <!-- タップで “本” を開く -->
-      <div class="shelf" role="button" tabindex="0" onclick="location.href='/issue-01/'" onkeydown="if(event.key==='Enter')location.href='/issue-01/'">
-        <div class="cover">
-          <!-- 表紙サムネ：このパスに表紙画像を置く -->
-          <img src="/issue-01/assets/img/covers/front.jpg" alt="Issue 01 cover" onerror="this.style.display='none'">
-        </div>
-        <div class="meta">
-          <div class="issue">ISSUE 01</div>
-          <h2 class="title">COLOR AS TIME</h2>
-          <div class="small">2026 • 20 pages</div>
-        </div>
-        <div class="cta"><div class="btn">Open</div></div>
-      </div>
+    <div id="alert" class="alert"></div>
+    <section id="issues" class="list" aria-label="Issues list"></section>
 
-      <div class="footer">© 2026 SAIREN COLOR ARCHIVE</div>
-    </div>
-  </div>
+    <div class="footer">© <span id="y"></span> SAIREN COLOR ARCHIVE</div>
+  </main>
+
+  <script src="./assets/js/archive.js?v=20251228"></script>
 </body>
 </html>
